@@ -1,0 +1,17 @@
+C:\Users\Burak\source\repos\DataAccesLayer\bin\Debug\DataAccesLayer.dll.config
+C:\Users\Burak\source\repos\DataAccesLayer\bin\Debug\DataAccesLayer.dll
+C:\Users\Burak\source\repos\DataAccesLayer\bin\Debug\DataAccesLayer.pdb
+C:\Users\Burak\source\repos\DataAccesLayer\bin\Debug\EntityFramework.dll
+C:\Users\Burak\source\repos\DataAccesLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Burak\source\repos\DataAccesLayer\bin\Debug\EntityLayer.dll
+C:\Users\Burak\source\repos\DataAccesLayer\bin\Debug\EntityLayer.pdb
+C:\Users\Burak\source\repos\DataAccesLayer\bin\Debug\EntityLayer.dll.config
+C:\Users\Burak\source\repos\DataAccesLayer\bin\Debug\EntityFramework.xml
+C:\Users\Burak\source\repos\DataAccesLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.csproj.AssemblyReference.cache
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.csproj.CoreCompileInputs.cache
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.csproj.CopyComplete
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.dll
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.pdb
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.mig1.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.csproj.GenerateResource.cache
