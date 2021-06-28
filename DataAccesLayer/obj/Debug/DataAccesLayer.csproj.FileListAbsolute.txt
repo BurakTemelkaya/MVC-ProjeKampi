@@ -15,3 +15,10 @@ C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.dll
 C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.pdb
 C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.mig1.resources
 C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.csproj.GenerateResource.cache
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.mig_writer_edit.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.mig_writertitle_add.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.migimageSizeChange.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.mig_Writer_AddStatus.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.mig_contentStatusAdd.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.migHeadingStatusAdd.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.migAboutAboutDetailsRename.resources

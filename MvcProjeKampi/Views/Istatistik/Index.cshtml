@@ -5,34 +5,36 @@
 }
 
 <br />
-<h2 class="text-center">İstatistikler</h2>
-<div class="text-center">
-    <div class="card card-blue">
+<h1 class="text-center">İstatistikler</h1><br />
+<div class="card-deck text-center">
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Toplam Kategori Sayısı</div><br />
         <div class="card-body">
-            Toplam Kategori Sayısı : @ViewBag.SumCategori
+            <h3 class="card-text">@ViewBag.SumCategori</h3>
         </div>
     </div>
-
-    <div class="card card-cyan">
+    <div class="card text-white bg-cyan mb-3" style="max-width: 18rem;">
+        <div class="card-header">Başlık tablosunda "yazılım" kategorisine ait başlık sayısı</div>
         <div class="card-body">
-            Başlık tablosunda "yazılım" kategorisine ait başlık sayısı :&nbsp; @ViewBag.HeadYazilimSum
+            <h3 class="card-text">@ViewBag.HeadYazilimSum</h3>
         </div>
     </div>
-
-    <div class="card card-dark">
+    <div class="card text-white bg-green mb-3" style="max-width: 18rem;">
+        <div class="card-header">Yazar adında 'a' harfi geçen yazar sayısı</div>
         <div class="card-body">
-            Yazar adında 'a' harfi geçen yazar sayısı :&nbsp; @ViewBag.WriterCount
+            <h3 class="card-text">@ViewBag.WriterCount</h3>
         </div>
     </div>
-
-    <div class="card card-gray">
+    <div class="card text-white bg-red mb-3" style="max-width: 18rem;">
+        <div class="card-header">En fazla başlığa sahip kategori adı</div><br />
         <div class="card-body">
-            En fazla başlığa sahip kategori adı :&nbsp; @ViewBag.MaxCategoryName
+            <h3 class="card-text">@ViewBag.MaxCategoryName</h3>
         </div>
     </div>
-    <div class="card">
+    <div class="card text-white bg-yellow mb-3" style="max-width: 18rem;">
+        <div class="card-header">Kategori tablosunda durumu true olan kategoriler ile false olan kategoriler arasındaki sayısal fark</div>
         <div class="card-body">
-            Kategori tablosunda durumu true olan kategoriler ile false olan kategoriler arasındaki sayısal fark :&nbsp; @ViewBag.CategoryMaxMinDifference
+            <h3 class="card-text">@ViewBag.CategoryMaxMinDifference</h3>
         </div>
     </div>
 </div>
