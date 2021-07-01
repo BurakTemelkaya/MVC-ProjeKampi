@@ -22,3 +22,4 @@ C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.m
 C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.mig_contentStatusAdd.resources
 C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.migHeadingStatusAdd.resources
 C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.migAboutAboutDetailsRename.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.migadd_Message.resources
