@@ -23,3 +23,10 @@ C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.m
 C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.migHeadingStatusAdd.resources
 C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.migAboutAboutDetailsRename.resources
 C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.migadd_Message.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.mig_ContactAddDate.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.mig_addImage_File.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.mig_admin_table.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.message_add_IsRead.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.AdminAddAdminStatus.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.SkillTableAdded.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.AdminAndWriterHashing.resources

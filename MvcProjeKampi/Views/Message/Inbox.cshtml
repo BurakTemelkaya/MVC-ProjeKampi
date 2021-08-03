@@ -4,7 +4,7 @@
     ViewBag.Title = "Inbox";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+@{ string read = ""; }
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini">
@@ -20,7 +20,7 @@
     <section class="content">
         <div class="row">
             <div class="col-md-3">
-                @Html.Action("MessageListMenu", "Contact")
+                @Html.Action("MessageListMenu", "Contact") @*menü*@
             </div>
 
             <div class="col-md-9">
@@ -62,6 +62,7 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
+                                        read = (!item.IsRead) ? "warning" : "capitalize";
                                         <tr>
                                             <td>
                                                 <div class="icheck-primary">
@@ -69,13 +70,23 @@
                                                     <label for="check1"></label>
                                                 </div>
                                             </td>
-                                            <td class="mailbox-star"><a href="/Contact/GetContactDetails/@item.MessageID"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="/Contact/GetContactDetails/@item.MessageID">@item.SenderMail</a></td>
+                                            <td class="mailbox-star"><a href="/Message/GetInBoxMessageDetails/@item.MessageID"><i class="fas fa-star text-warning"></i></a></td>
+                                            <td class="mailbox-name"><a href="/Message/GetInBoxMessageDetails/@item.MessageID">@item.SenderMail</a></td>
                                             <td class="mailbox-subject">
-                                                <b>@item.Subject</b> - @item.MessageContent
+                                                <b>@item.Subject</b> - @if (item.MessageContent.Length > 30)
+                                                {
+                                                    @item.MessageContent.Substring(0, 30)
+                                                }
+                                                else
+                                                {
+                                                    @item.MessageContent
+                                                }
+                                                ...
                                             </td>
-                                            <td class="mailbox-attachment"></td>
-                                            <td class="mailbox-date">5 mins ago</td>
+                                            <td class="mailbox-attachment">
+                                                <a class="btn btn-default btn-sm" href="/Message/IsRead/@item.MessageID"><i class="fas fa-mail-bulk text-@read"></i></a>
+                                            </td>
+                                            <td class="mailbox-date">@(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>
                                         </tr>
                                     }
                                 </tbody>
@@ -85,6 +96,7 @@
                         <!-- /.mail-box-messages -->
                     </div>
                     <!-- /.card-body -->
+                    <p class="text-center">Okunmamış Mesaj Sayısı : <b> @ViewBag.unRead</b></p>
                     <div class="card-footer p-0">
                         <div class="mailbox-controls">
                             <!-- Check all button -->
@@ -97,6 +109,8 @@
                                 <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
                             </div>
                             <!-- /.btn-group -->
+                            &nbsp;
+
                             <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
                             <div class="float-right">
                                 1-50/200

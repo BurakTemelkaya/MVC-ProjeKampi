@@ -20,22 +20,27 @@ namespace BusinessLayer.Concrete
 
         public void ContentAdd(Content content)
         {
-            throw new NotImplementedException();
+            _contentdal.Insert(content);
         }
 
         public void ContentDelete(Content content)
         {
-            throw new NotImplementedException();
+            _contentdal.Delete(content);
         }
 
         public void ContentUpdate(Content content)
         {
-            throw new NotImplementedException();
+            _contentdal.Update(content);
         }
 
         public Content GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _contentdal.Get(x => x.ContentID == id);
+        }
+
+        public List<Content> GetList(string p)
+        {
+            return _contentdal.List(x=> x.ContentValue.Contains(p));
         }
 
         public List<Content> GetList()
@@ -46,6 +51,11 @@ namespace BusinessLayer.Concrete
         public List<Content> GetListByHeadingID(int id)
         {
             return _contentdal.List(x => x.HeadingID == id);
+        }
+
+        public List<Content> GetListByWriter(int id)
+        {
+            return _contentdal.List(x => x.WriterID == id);
         }
     }
 }

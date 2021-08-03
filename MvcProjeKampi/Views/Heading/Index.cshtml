@@ -132,8 +132,13 @@
                                         </i>
                                         Düzenle
                                     </a>
-                                    <a class="btn @statuButtonColor btn-sm" href="/Heading/DeleteHeading/@item.HeadingID">
+                                    <a class="btn btn-danger btn-sm" href="/Heading/DeleteHeading/@item.HeadingID">
                                         <i class="fas fa-trash">
+                                        </i>
+                                        Sil
+                                    </a>
+                                    <a class="btn @statuButtonColor btn-sm" href="/Heading/HeadingStatusChange/@item.HeadingID">
+                                        <i class="fas fa-business-time">
                                         </i>
                                         @statuButton
                                     </a>
@@ -148,25 +153,3 @@
 </body>
 </html>
 <a href="/Heading/AddHeading/" class="btn btn-primary">Yeni Başlık Girişi</a>
-
-
-
-@*<h2>Index</h2>
-    <br />
-    <table class="table table-bordered">
-        <tr>
-            <th>ID</th>
-            <th>Başlık</th>
-            <th>Kategori</th>
-        </tr>
-        @foreach(var item in Model)
-        {
-            <tr>
-                <td>@item.HeadingID</td>
-                <td>@item.HeadingName</td>
-                <td>@item.Category.CategoryName</td>
-            </tr>
-        }
-    </table>
-    <br />
-    <a href="/Heading/AddHeading" class="btn btn-info">Yeni başlık Girişi</a>*@

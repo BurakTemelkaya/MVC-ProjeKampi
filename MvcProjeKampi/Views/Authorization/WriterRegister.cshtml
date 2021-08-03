@@ -1,0 +1,87 @@
+﻿@model EntityLayer.Dto.WriterLoginDto
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>MVC PROJE KAMPI</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/login-form-20/css/style.css">
+
+</head>
+<body class="img js-fullheight" style="background-image: url(/AdminLTE-3.0.4/login-form-20/images/bg.jpg);">
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">MVC PROJE KAMPI YAZAR KAYIT SAYFASI</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-6 text-center">
+                    <div class="login-wrap p-0">
+                        @using (Html.BeginForm("WriterRegister", "Authorization", FormMethod.Post, new { @class = "signin-form" }))
+                        {
+                            <br />
+                            <div class="form-group">
+                                @Html.TextBoxFor(x => x.WriterName, new { placeholder = "Adınız", @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger bg-dark" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(x => x.WriterSurName, new { placeholder = "Soyadınız", @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.WriterSurName, "", new { @class = "text-danger bg-dark" })
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="WriterMail" placeholder="Mail Adresi" required>
+                                @Html.ValidationMessageFor(x => x.WriterMail, "", new { @class = "text-danger bg-dark" })
+                            </div>
+                            <div class="form-group">
+                                <input id="password-field" type="password" class="form-control" name="WriterPassword" placeholder="******" required />
+                                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                @Html.ValidationMessageFor(x => x.WriterPassword, "", new { @class = "text-danger bg-dark" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextAreaFor(x => x.WriterAbout, new { placeholder = "Kendiniziden Bahsedin.", @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.WriterAbout, "", new { @class = "text-danger bg-dark" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(x => x.WriterTitle, new { placeholder = "Ünvanınız", @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.WriterTitle, "", new { @class = "text-danger bg-dark" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(x => x.WriterImage, new { placeholder = "Resim Yolu", @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.WriterImage, "", new { @class = "text-danger bg-dark" })
+                            </div>
+                            <div class="form-group">
+                                <button class="form-control btn btn-primary submit px-3">Kaydol</button>
+                            </div>
+                            <br />
+                        }
+                        <p class="w-100 text-center">&mdash; Veya Sosyal Medya İle Giriş Yapın &mdash;</p>
+                        <div class="social d-flex text-center">
+                            <a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
+                            <a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/AdminLTE-3.0.4/login-form-20/js/jquery.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/login-form-20/js/popper.js"></script>
+    <script src="~/AdminLTE-3.0.4/login-form-20/js/bootstrap.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/login-form-20/js/main.js"></script>
+
+</body>
+</html>
+
+
+

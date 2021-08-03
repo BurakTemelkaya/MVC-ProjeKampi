@@ -114,3 +114,5 @@ C:\Users\Burak\source\repos\BusinessLayer\bin\Debug\System.Xml.XPath.dll
 C:\Users\Burak\source\repos\BusinessLayer\bin\Debug\System.Xml.XPath.XDocument.dll
 C:\Users\Burak\source\repos\BusinessLayer\bin\Debug\FluentValidation.dll
 C:\Users\Burak\source\repos\BusinessLayer\bin\Debug\FluentValidation.xml
+C:\Users\Burak\source\repos\BusinessLayer\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Burak\source\repos\BusinessLayer\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.xml

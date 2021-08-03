@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccesLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +13,32 @@ namespace MvcProjeKampi.Controllers
 {
     public class MessageController : Controller
     {
-        MessageManager cm = new MessageManager(new EfMessageDal());
-        public ActionResult Inbox()
+        MessageManager mm = new MessageManager(new EfMessageDal());
+        MessageValidator messageValidator = new MessageValidator();
+
+        [Authorize]
+        public ActionResult Inbox(string p)
         {
-            var messageList = cm.GetListInbox();
+            var messageList = mm.GetListInbox(p);
+            ViewBag.unRead = mm.GetCountUnreadMessage();
             return View(messageList);
         }
-        public ActionResult Sendbox()
+        public ActionResult Sendbox(string p)
         {
-            var messageList = cm.GetListSendbox();
+            var messageList = mm.GetListSendbox(p);
             return View(messageList);
         }
+        public ActionResult GetInBoxMessageDetails(int id)
+        {
+            var values = mm.GetByID(id);
+            return View(values);
+        }
+        public ActionResult GetSendBoxMessageDetails(int id)
+        {
+            var values = mm.GetByID(id);
+            return View(values);
+        }
+
         [HttpGet]
         public ActionResult NewMessage()
         {
@@ -30,7 +47,36 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult NewMessage(Message p)
         {
+            ValidationResult results = messageValidator.Validate(p);
+            if (results.IsValid)
+            {
+                p.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                mm.MessageAdd(p);
+                return RedirectToAction("SendBox");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
             return View();
+        }
+        public ActionResult IsRead(int id) //Bu alan gelen mesajlarindaki okundu butonundan gelen degeri DB yazar
+        {
+            var messageValue = mm.GetByID(id);
+
+            if (messageValue.IsRead)
+            {
+                messageValue.IsRead = false;
+            }
+            else
+            {
+                messageValue.IsRead = true;
+            }
+            mm.MessageUpdate(messageValue);
+            return RedirectToAction("Inbox");
         }
     }
 }

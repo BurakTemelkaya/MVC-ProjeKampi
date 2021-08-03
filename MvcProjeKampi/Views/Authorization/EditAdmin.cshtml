@@ -1,0 +1,26 @@
+﻿@model EntityLayer.Concrete.Admin
+@{
+    ViewBag.Title = "EditAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Admin Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("EditAdmin", "Authorization", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.HiddenFor(x => x.AdminID, new { @class = "form-control" })
+    @Html.Label("Admin Kullanıcı Adı")
+    @Html.TextBoxFor(x => x.AdminUserName, new { @class = "form-control" })
+    <br />
+    @Html.Label("Admin Şifre")
+    @Html.TextBoxFor(x => x.AdminPassword, new { @class = "form-control" })
+    <br />
+    @Html.Label("Admin Rolü")
+    @Html.TextBoxFor(x => x.AdminRole, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Güncelle</button>
+</div>
+}
+
