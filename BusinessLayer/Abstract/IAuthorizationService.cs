@@ -10,8 +10,10 @@ namespace BusinessLayer.Abstract
 {
     public interface IAuthorizationService
     {
-        void AdminAdd(string adminUserName, string adminMail, string adminPassword, string adminRole, bool adminStatus);
-        bool AdminLogin(AdminLoginDto adminLogInDto);
+        Admin AdminHash(AdminLogInDto adminLogInDto);
+        void AdminAdd(AdminLogInDto adminLogInDto);
+        void AdminUpdate(AdminLogInDto adminLogInDto);
+        bool AdminLogin(AdminLogInDto adminLogInDto);
 
         void WriterRegister(string writerName, string writerSurName, string writerTitle, string writerAbout, string writerImage, string writerUserName, string writerPassword, bool WriterStatus);
         bool WriterLogIn(WriterLoginDto writerLogInDto);

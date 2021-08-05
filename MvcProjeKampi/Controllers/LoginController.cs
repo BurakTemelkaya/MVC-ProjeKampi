@@ -18,7 +18,7 @@ namespace MvcProjeKampi.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(AdminLoginDto p, string ReturnUrl)
+        public ActionResult Index(AdminLogInDto p, string ReturnUrl)
         {
             //var adminUserInfo = adminLoginManager.GetAdmin(p.AdminUserName, p.AdminPassword);
             //if (adminUserInfo != null)//hashsiz giriş

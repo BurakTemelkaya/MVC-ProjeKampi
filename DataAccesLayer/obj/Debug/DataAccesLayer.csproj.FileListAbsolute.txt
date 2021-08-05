@@ -30,3 +30,4 @@ C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.m
 C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.AdminAddAdminStatus.resources
 C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.SkillTableAdded.resources
 C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.AdminAndWriterHashing.resources
+C:\Users\Burak\source\repos\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.ChangedAdminMailHash.resources

@@ -10,19 +10,26 @@ namespace BusinessLayer.Utilities
     class HashingHelper
     {
         //Admin bilgilerini Hashleme
-        public static void AdminCreatePasswordHash(string adminMail, string adminPassword, out byte[] adminMailHash, out byte[] adminPasswordHash, out byte[] adminPasswordSalt)
+        public static void AdminCreatePasswordHash(string adminPassword, out byte[] adminPasswordHash, out byte[] adminPasswordSalt)
         {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
+            using (var hmac = new HMACSHA512())
             {
                 adminPasswordSalt = hmac.Key;
-                adminPasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminPassword));
-                adminMailHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminMail));
+                adminPasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminPassword));                
             }
         }
-
-        public static bool AdminVerifyPasswordHash(string adminMail, string adminPassword, byte[] adminMailHash, byte[] adminPasswordHash, byte[] adminPasswordSalt)
+        public static void AdminCreateMailHash(string adminMail, out byte[] adminMailHash, out byte[] adminMailSalt)
         {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512(adminPasswordSalt))
+            using (var hmac = new HMACSHA512())
+            {
+                adminMailSalt = hmac.Key;
+                adminMailHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminMail));
+            }            
+        }
+        //login control
+        public static bool AdminVerifyPasswordHash(string adminPassword, byte[] adminPasswordHash, byte[] adminPasswordSalt)
+        {
+            using (var hmac = new HMACSHA512(adminPasswordSalt))
             {
                 var computedPasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminPassword));
                 for (int i = 0; i < computedPasswordHash.Length; i++)
@@ -32,22 +39,21 @@ namespace BusinessLayer.Utilities
                         return false;
                     }
                 }
-
-                var computedAdminMailHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminMail));
+                /*var computedAdminMailHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminMail));
                 for (int i = 0; i < computedAdminMailHash.Length; i++)
                 {
                     if (computedAdminMailHash[i] != adminMailHash[i])
                     {
                         return false;
                     }
-                }
+                }*/
                 return true;
             }
         }
 
-        public static bool AdminVerifyPasswordHash(string adminMail, byte[] adminMailHash)
+        public static bool AdminVerifyMailHash(string adminMail, byte[] adminMailHash , byte[] adminMailSalt)
         {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
+            using (var hmac = new HMACSHA512(adminMailSalt))
             {
                 var computedAdminMailHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminMail));
                 for (int i = 0; i < computedAdminMailHash.Length; i++)
@@ -73,7 +79,7 @@ namespace BusinessLayer.Utilities
 
         public static void WriterCreatePasswordHash(string adminPassword, out byte[] adminPasswordHash, out byte[] adminPasswordSalt)
         {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
+            using (var hmac = new HMACSHA512())
             {
                 adminPasswordSalt = hmac.Key;
                 adminPasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminPassword));
@@ -83,7 +89,7 @@ namespace BusinessLayer.Utilities
 
         public static bool WriterVerifyPasswordHash(string adminPassword, byte[] adminPasswordHash, byte[] adminPasswordSalt)
         {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512(adminPasswordSalt))
+            using (var hmac = new HMACSHA512(adminPasswordSalt))
             {
                 var computedPasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(adminPassword));
                 for (int i = 0; i < computedPasswordHash.Length; i++)

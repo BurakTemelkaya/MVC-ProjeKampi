@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BusinessLayer.Utilities;
 using EntityLayer.Dto;
+using DataAccesLayer.EntityFramework;
 
 namespace BusinessLayer.Concrete
 {
@@ -14,6 +15,8 @@ namespace BusinessLayer.Concrete
     {
         IAdminService _adminService;
         IWriterService _writerService;
+        AdminManager adminManager = new AdminManager(new EfAdminDal());
+        private int _adminID,_writerID;
         public AuthorizationManager(IAdminService adminService, IWriterService writerService)
         {
             _adminService = adminService;
@@ -25,23 +28,55 @@ namespace BusinessLayer.Concrete
             _adminService = adminService;
 
         }
-        public void AdminAdd(string adminUserName, string adminMail, string adminPassword, string adminRole, bool adminStatus)
+        public Admin AdminHash(AdminLogInDto adminLogInDto)
         {
-            byte[] adminMailHash, adminPasswordHash, adminPasswordSalt;
-            HashingHelper.AdminCreatePasswordHash(adminMail, adminPassword, out adminMailHash, out adminPasswordHash, out adminPasswordSalt);
+            byte[] adminMailHash,adminMailSalt, adminPasswordHash, adminPasswordSalt;
             var admin = new Admin
             {
-                AdminUserName = adminUserName,
-                AdminMail = adminMailHash,
-                AdminPasswordHash = adminPasswordHash,
-                AdminPasswordSalt = adminPasswordSalt,
-                AdminRole = adminRole,
-                AdminStatus = adminStatus
+                AdminUserName = adminLogInDto.AdminUserName,
+                AdminRole = adminLogInDto.AdminRole,
+                AdminStatus = adminLogInDto.AdminStatus
             };
+            _adminID = adminLogInDto.AdminID;
+            var beforeAdminData = adminManager.GetByID(_adminID);
+            if (adminLogInDto.AdminPassword != "" && adminLogInDto.AdminPassword != null)//password boş mu kontrolü
+            {
+                HashingHelper.AdminCreatePasswordHash(adminLogInDto.AdminPassword, out adminPasswordHash, out adminPasswordSalt);//password hash
+                admin.AdminPasswordHash = adminPasswordHash;
+                admin.AdminPasswordSalt = adminPasswordSalt;
+            }
+            else//veri boş olmasın diye eski veriyi veriyorum
+            {
+                admin.AdminPasswordHash = beforeAdminData.AdminPasswordHash;
+                admin.AdminPasswordSalt = beforeAdminData.AdminPasswordSalt;
+            }
+            if (adminLogInDto.AdminMail != "" && adminLogInDto.AdminMail != null)
+            {
+                HashingHelper.AdminCreateMailHash(adminLogInDto.AdminMail, out adminMailHash, out adminMailSalt);//mail hash
+                admin.AdminMailHash = adminMailHash;
+                admin.AdminMailSalt = adminMailSalt;
+            }
+            else
+            {
+                admin.AdminMailHash = beforeAdminData.AdminMailHash;
+                admin.AdminMailSalt = beforeAdminData.AdminMailSalt;
+            }           
+            return admin;
+        }
+        public void AdminAdd(AdminLogInDto adminLogInDto)
+        {
+            var admin = AdminHash(adminLogInDto);
             _adminService.AdminAdd(admin);
         }
+        public void AdminUpdate(AdminLogInDto adminLogInDto)
+        {
+            var admin = AdminHash(adminLogInDto);
+            admin.AdminID = _adminID;
 
-        public bool AdminLogin(AdminLoginDto adminLogInDto)
+            _adminService.AdminUpdate(admin);
+        }
+
+        public bool AdminLogin(AdminLogInDto adminLogInDto)
         {
             using (var crypto = new System.Security.Cryptography.HMACSHA512())
             {
@@ -49,8 +84,8 @@ namespace BusinessLayer.Concrete
                 var admin = _adminService.GetList();
                 foreach (var item in admin)
                 {
-                    if (HashingHelper.AdminVerifyPasswordHash(adminLogInDto.AdminMail, adminLogInDto.AdminPassword, item.AdminMail,
-                        item.AdminPasswordHash, item.AdminPasswordSalt))
+                    if (HashingHelper.AdminVerifyPasswordHash(adminLogInDto.AdminPassword,
+                        item.AdminPasswordHash, item.AdminPasswordSalt) && HashingHelper.AdminVerifyMailHash(adminLogInDto.AdminMail,item.AdminMailHash,item.AdminMailSalt))
                     {
                         return true;
                     }
@@ -95,5 +130,7 @@ namespace BusinessLayer.Concrete
             };
             _writerService.WriterAdd(writer);
         }
+
+
     }
 }

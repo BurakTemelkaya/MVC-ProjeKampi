@@ -111,11 +111,12 @@
                     </tbody>
                 </table>
                 @Html.PagedListPager((IPagedList)Model, p => Url.Action("AllHeading", new { p }),
-               new PagedListRenderOptions
-                    {
-                   LiElementClasses=new List<string>
-                   {"page-link"}
-                })
+                        new PagedListRenderOptions
+                             {
+                            LiElementClasses = new List<string>
+                            {"page-link"}
+                         })
+
             </div>
         </div>
     </section>

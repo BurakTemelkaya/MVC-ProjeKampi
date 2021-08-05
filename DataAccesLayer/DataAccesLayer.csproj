@@ -139,6 +139,10 @@
     <Compile Include="Migrations\202108031048543_AdminAndWriterHashing.designer.cs">
       <DependentUpon>202108031048543_AdminAndWriterHashing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108052214234_ChangedAdminMailHash.cs" />
+    <Compile Include="Migrations\202108052214234_ChangedAdminMailHash.designer.cs">
+      <DependentUpon>202108052214234_ChangedAdminMailHash.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -200,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108031048543_AdminAndWriterHashing.resx">
       <DependentUpon>202108031048543_AdminAndWriterHashing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108052214234_ChangedAdminMailHash.resx">
+      <DependentUpon>202108052214234_ChangedAdminMailHash.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,4 @@
-﻿@model EntityLayer.Dto.AdminLoginDto
+﻿@model EntityLayer.Dto.AdminLogInDto
 @{
     ViewBag.Title = "AddAdmin";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -20,7 +20,7 @@
     @Html.ValidationMessageFor(x => x.AdminPassword)
     <br />
     @Html.Label("Rolü Seçiniz")
-    @Html.TextBoxFor(x => x.AdminRole, new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.AdminRole, (List<SelectListItem>)ViewBag.roles, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.AdminRole)
     <br />
     <button class="btn btn-primary col-md-8">Admin Ekle</button>

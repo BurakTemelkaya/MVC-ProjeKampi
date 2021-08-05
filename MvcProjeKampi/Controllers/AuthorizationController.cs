@@ -27,26 +27,28 @@ namespace MvcProjeKampi.Controllers
         }
         [HttpGet][AllowAnonymous]
         public ActionResult AddAdmin()
-        {
+        {            
+            ViewBag.roles = GetRoles();
             return View();
         }
         [HttpPost][AllowAnonymous]
-        public ActionResult AddAdmin(AdminLoginDto adminLogInDto)
-        {
+        public ActionResult AddAdmin(AdminLogInDto adminLogInDto)
+        {          
             adminLogInDto.AdminStatus = true;
-            authorizationService.AdminAdd(adminLogInDto.AdminUserName, adminLogInDto.AdminMail, adminLogInDto.AdminPassword, adminLogInDto.AdminRole, adminLogInDto.AdminStatus);
+            authorizationService.AdminAdd(adminLogInDto);         
             return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult EditAdmin(int id)
         {
-            var adminValue = adminManager.GetByID(id);
+            ViewBag.roles = GetRoles();
+            var adminValue = adminManager.GetByIDDto(id);
             return View(adminValue);
         }
         [HttpPost]
-        public ActionResult EditAdmin(Admin p)
+        public ActionResult EditAdmin(AdminLogInDto p)
         {
-            adminManager.AdminUpdate(p);
+            authorizationService.AdminUpdate(p);
             return RedirectToAction("Index");
         }
         public ActionResult StatusChangedAdmin(int id)
@@ -101,6 +103,20 @@ namespace MvcProjeKampi.Controllers
             FormsAuthentication.SetAuthCookie(writerLogInDto.WriterMail, false);
             Session["WriterMail"] = writerLogInDto.WriterMail;
             return RedirectToAction("AllHeading", "WriterPanel");
+        }
+        public List<SelectListItem> GetRoles()
+        {
+            List<string> roles = new List<string>();
+            roles.Add("A");
+            roles.Add("B");
+            roles.Add("C");
+            List<SelectListItem> adminRole = (from x in roles
+                                              select new SelectListItem
+                                              {
+                                                  Text = x,
+                                                  Value = x
+                                              }).ToList();
+            return adminRole;
         }
     }
 }

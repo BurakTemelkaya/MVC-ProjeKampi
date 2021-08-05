@@ -57,7 +57,7 @@ namespace MvcProjeKampi.Roles
                     {
                         for (int i = 0; i < mailCrypto.Length; i++)
                         {
-                            if (mailCrypto[i] == item.AdminMail[i])
+                            if (mailCrypto[i] == item.AdminMailHash[i])
                             {
                                 return new string[] { item.AdminRole };
                             }
