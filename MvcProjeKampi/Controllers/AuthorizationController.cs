@@ -71,7 +71,7 @@ namespace MvcProjeKampi.Controllers
             return View();
         }
         [AllowAnonymous][HttpPost]
-        public ActionResult WriterRegister(WriterLoginDto writerLogInDto)
+        public ActionResult WriterRegister(WriterLogInDto writerLogInDto)
         {
             /*ValidationResult result = writerValidator.Validate(p);
             if (result.IsValid)
@@ -90,7 +90,7 @@ namespace MvcProjeKampi.Controllers
                 }
             }
             eski kodlar */
-            authorizationService.WriterRegister(
+            /*authorizationService.WriterRegister(
                 writerLogInDto.WriterName,
                 writerLogInDto.WriterSurName,
                 writerLogInDto.WriterTitle,
@@ -99,7 +99,8 @@ namespace MvcProjeKampi.Controllers
                 writerLogInDto.WriterMail,
                 writerLogInDto.WriterPassword,
                 writerLogInDto.WriterStatus = true
-                );
+                );*/
+            authorizationService.WriterAdd(writerLogInDto);
             FormsAuthentication.SetAuthCookie(writerLogInDto.WriterMail, false);
             Session["WriterMail"] = writerLogInDto.WriterMail;
             return RedirectToAction("AllHeading", "WriterPanel");

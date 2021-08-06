@@ -11,6 +11,8 @@ using PagedList;
 using PagedList.Mvc;
 using FluentValidation.Results;
 using BusinessLayer.ValidationRules;
+using BusinessLayer.Abstract;
+using EntityLayer.Dto;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -19,24 +21,25 @@ namespace MvcProjeKampi.Controllers
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         WriterManager wm = new WriterManager(new EfWriterDal());
+        IAuthorizationService authorizationService = new AuthorizationManager(new AdminManager(new EfAdminDal()), new WriterManager(new EfWriterDal()));
         Context c = new Context();
         [HttpGet]
         public ActionResult WriterProfile(int id=0)
         {
             string p = (string)Session["WriterMail"];
             id = c.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault();
-            var writerValue = wm.GetById(id);
+            var writerValue = wm.GetByIdWriterDto(id);
             return View(writerValue);
         }
         
         [HttpPost]
-        public ActionResult WriterProfile(Writer p)
+        public ActionResult WriterProfile(WriterLogInDto p)
         {
             WriterValidator writerValidator = new WriterValidator();
             ValidationResult results = writerValidator.Validate(p);
             if (results.IsValid)
             {
-                wm.WriterUpdate(p);
+                authorizationService.WriterUpdate(p);
                 return RedirectToAction("AllHeading");
             }
             else
@@ -46,7 +49,7 @@ namespace MvcProjeKampi.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-            return View();
+            return View();                      
         }
         public ActionResult MyHeading(string p)
         {            

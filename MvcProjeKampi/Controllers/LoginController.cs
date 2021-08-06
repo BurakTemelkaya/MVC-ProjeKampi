@@ -42,7 +42,7 @@ namespace MvcProjeKampi.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult WriterLogin(WriterLoginDto p, string ReturnUrl)
+        public ActionResult WriterLogin(WriterLogInDto p, string ReturnUrl)
         {            
             //var writerUserInfo = wm.GetWriter(p.WriterMail, p.WriterPassword);
             //if (writerUserInfo != null)

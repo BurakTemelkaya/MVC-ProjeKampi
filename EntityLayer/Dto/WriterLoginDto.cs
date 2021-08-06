@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Dto
 {
-    public class WriterLoginDto
+    public class WriterLogInDto
     {
         public int WriterID { get; set; }
         public string WriterName { get; set; }

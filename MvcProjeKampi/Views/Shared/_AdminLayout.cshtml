@@ -39,7 +39,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
                         @if (User.IsInRole("B"))
                         {
                             <li class="nav-item has-treeview">
@@ -108,20 +108,33 @@
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="/Skill/Index/" class="nav-link">
-                                <i class="nav-icon fas fa-tree"></i>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
-                                    Yetenekleri Göster
+                                    Yetenekler
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="/Skill/SkillListMenu/" class="nav-link">
-                                <i class="nav-icon fas fa-tree"></i>
-                                <p>
-                                    Yetenekleri Düzenle
-                                </p>
-                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/Skill/Index/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Yetenekleri Göster</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Skill/AddSkill/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Yetenek Ekle</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Skill/SkillListMenu/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Yetenekleri Düzenle</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="/About/Index/" class="nav-link">
@@ -207,17 +220,14 @@
             </div>
         </div>
         <aside class="control-sidebar control-sidebar-dark">
-        </aside>        
+        </aside>
     </div>
     <!-- ./wrapper -->
     <!-- REQUIRED SCRIPTS -->
-    <!-- jQuery -->
     <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap -->
     <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE -->
     <script src="~/AdminLTE-3.0.4/dist/js/adminlte.js"></script>
-
     <!-- OPTIONAL SCRIPTS -->
     <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
     <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>

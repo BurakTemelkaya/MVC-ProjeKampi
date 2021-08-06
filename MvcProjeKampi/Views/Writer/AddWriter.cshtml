@@ -1,4 +1,4 @@
-﻿@model EntityLayer.Concrete.Writer
+﻿@model EntityLayer.Dto.WriterLogInDto
 @{
     ViewBag.Title = "AddWriter";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -22,7 +22,7 @@
     @Html.ValidationMessageFor(x => x.WriterMail)
     <br />
     @Html.Label("Yazar Şifresi")
-    @Html.TextBoxFor(x => x.WriterPassword, new { @class = "form-control" })
+    <input type="password" name="WriterPassword" class="form-control" />
     @Html.ValidationMessageFor(x => x.WriterPassword)
     <br />
     @Html.Label("Yazar Görsel Linki")

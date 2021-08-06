@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccesLayer.Abstract;
 using EntityLayer.Concrete;
+using EntityLayer.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,23 @@ namespace BusinessLayer.Concrete
         public Writer GetById(int id)
         {
             return _writerDal.Get(x => x.WriterID == id);
+        }
+
+        public WriterLogInDto GetByIdWriterDto(int id)
+        {
+            var writer = _writerDal.Get(x => x.WriterID == id);
+            //writerı writerlogindto'ya çevirme
+            var writerLogInDto = new WriterLogInDto
+            {
+                WriterID = writer.WriterID,
+                WriterName= writer.WriterName,
+                WriterSurName = writer.WriterSurName,
+                WriterImage = writer.WriterImage,
+                WriterMail = writer.WriterMail,
+                WriterAbout = writer.WriterAbout,
+                WriterTitle = writer.WriterTitle            
+            };
+            return writerLogInDto;
         }
 
         public List<Writer> GetList()

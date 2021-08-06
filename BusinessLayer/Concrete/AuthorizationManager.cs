@@ -16,7 +16,7 @@ namespace BusinessLayer.Concrete
         IAdminService _adminService;
         IWriterService _writerService;
         AdminManager adminManager = new AdminManager(new EfAdminDal());
-        private int _adminID,_writerID;
+        private int _adminID, _writerID;
         public AuthorizationManager(IAdminService adminService, IWriterService writerService)
         {
             _adminService = adminService;
@@ -30,7 +30,7 @@ namespace BusinessLayer.Concrete
         }
         public Admin AdminHash(AdminLogInDto adminLogInDto)
         {
-            byte[] adminMailHash,adminMailSalt, adminPasswordHash, adminPasswordSalt;
+            byte[] adminMailHash, adminMailSalt, adminPasswordHash, adminPasswordSalt;
             var admin = new Admin
             {
                 AdminUserName = adminLogInDto.AdminUserName,
@@ -56,11 +56,12 @@ namespace BusinessLayer.Concrete
                 admin.AdminMailHash = adminMailHash;
                 admin.AdminMailSalt = adminMailSalt;
             }
+
             else
             {
                 admin.AdminMailHash = beforeAdminData.AdminMailHash;
                 admin.AdminMailSalt = beforeAdminData.AdminMailSalt;
-            }           
+            }
             return admin;
         }
         public void AdminAdd(AdminLogInDto adminLogInDto)
@@ -72,7 +73,6 @@ namespace BusinessLayer.Concrete
         {
             var admin = AdminHash(adminLogInDto);
             admin.AdminID = _adminID;
-
             _adminService.AdminUpdate(admin);
         }
 
@@ -85,7 +85,7 @@ namespace BusinessLayer.Concrete
                 foreach (var item in admin)
                 {
                     if (HashingHelper.AdminVerifyPasswordHash(adminLogInDto.AdminPassword,
-                        item.AdminPasswordHash, item.AdminPasswordSalt) && HashingHelper.AdminVerifyMailHash(adminLogInDto.AdminMail,item.AdminMailHash,item.AdminMailSalt))
+                        item.AdminPasswordHash, item.AdminPasswordSalt) && HashingHelper.AdminVerifyMailHash(adminLogInDto.AdminMail, item.AdminMailHash, item.AdminMailSalt))
                     {
                         return true;
                     }
@@ -94,7 +94,7 @@ namespace BusinessLayer.Concrete
             }
         }
 
-        public bool WriterLogIn(WriterLoginDto writerLogInDto)
+        public bool WriterLogIn(WriterLogInDto writerLogInDto)
         {
             using (var crypto = new System.Security.Cryptography.HMACSHA512())
             {
@@ -112,25 +112,39 @@ namespace BusinessLayer.Concrete
             }
         }
 
-        public void WriterRegister(string writerName, string writerSurName, string writerTitle, string writerAbout, string writerImage, string writerMail, string writerPassword, bool WriterStatus)
+        public Writer WriterRegister(WriterLogInDto writerLogInDto)
         {
             byte[] passwordHash, passwordSalt;
-            HashingHelper.WriterCreatePasswordHash(writerPassword, out passwordHash, out passwordSalt);
+
             var writer = new Writer
             {
-                WriterName = writerName,
-                WriterSurName = writerSurName,
-                WriterTitle = writerTitle,
-                WriterAbout = writerAbout,
-                WriterImage = writerImage,
-                WriterMail = writerMail,
-                WriterPasswordHash = passwordHash,
-                WriterPasswordSalt = passwordSalt,
-                WriterStatus = WriterStatus
+                WriterName = writerLogInDto.WriterName,
+                WriterSurName = writerLogInDto.WriterSurName,
+                WriterTitle = writerLogInDto.WriterTitle,
+                WriterAbout = writerLogInDto.WriterAbout,
+                WriterImage = writerLogInDto.WriterImage,
+                WriterMail = writerLogInDto.WriterMail,
+
+                WriterStatus = writerLogInDto.WriterStatus
             };
+            if (writerLogInDto.WriterPassword != null)
+            {
+                HashingHelper.WriterCreatePasswordHash(writerLogInDto.WriterPassword, out passwordHash, out passwordSalt);
+                writer.WriterPasswordHash = passwordHash;
+                writer.WriterPasswordSalt = passwordSalt;
+            }
+            return writer;
+        }
+        public void WriterAdd(WriterLogInDto writerLogInDto)
+        {
+            var writer = WriterRegister(writerLogInDto);
+            writer.WriterID = writerLogInDto.WriterID;
             _writerService.WriterAdd(writer);
         }
-
-
+        public void WriterUpdate(WriterLogInDto writerLogInDto)
+        {
+            var writer = WriterRegister(writerLogInDto);
+            _writerService.WriterUpdate(writer);
+        }
     }
 }

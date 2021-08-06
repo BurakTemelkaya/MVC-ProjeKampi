@@ -1,7 +1,9 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
 using DataAccesLayer.EntityFramework;
 using EntityLayer.Concrete;
+using EntityLayer.Dto;
 using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,7 @@ namespace MvcProjeKampi.Controllers
     {
         WriterManager wm = new WriterManager(new EfWriterDal());
         WriterValidator writerValidator = new WriterValidator();
+        IAuthorizationService authorizationService = new AuthorizationManager(new AdminManager(new EfAdminDal()), new WriterManager(new EfWriterDal()));
         public ActionResult Index()
         {
             var writerValues = wm.GetList();
@@ -26,13 +29,13 @@ namespace MvcProjeKampi.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddWriter(Writer p)
-        {           
+        public ActionResult AddWriter(WriterLogInDto p)
+        {
             ValidationResult results = writerValidator.Validate(p);
             if (results.IsValid)
             {
-                wm.WriterAdd(p);
-                return RedirectToAction("Index");
+                authorizationService.WriterAdd(p);
+            return RedirectToAction("Index");
             }
             else
             {
@@ -46,17 +49,17 @@ namespace MvcProjeKampi.Controllers
         [HttpGet]
         public ActionResult EditWriter(int id)
         {
-            var writerValue = wm.GetById(id);
+            var writerValue = wm.GetByIdWriterDto(id);
             return View(writerValue);
         }
         [HttpPost]
-        public ActionResult EditWriter(Writer p)
+        public ActionResult EditWriter(WriterLogInDto p)
         {
             ValidationResult results = writerValidator.Validate(p);
             if (results.IsValid)
             {
-                wm.WriterUpdate(p);
-                return RedirectToAction("Index");
+                authorizationService.WriterUpdate(p);
+            return RedirectToAction("Index");
             }
             else
             {
@@ -65,6 +68,7 @@ namespace MvcProjeKampi.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
+            
             return View();
         }
     }

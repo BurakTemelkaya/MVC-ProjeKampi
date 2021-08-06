@@ -1,4 +1,4 @@
-﻿@model EntityLayer.Concrete.Writer
+﻿@model EntityLayer.Dto.WriterLogInDto
 @{
     ViewBag.Title = "Yazar Profil Sayfası";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
@@ -23,7 +23,7 @@
     @Html.ValidationMessageFor(x => x.WriterMail, null, new { @class = "text-danger" })
     <br />
     @Html.Label("Yazar Şifresi")
-    @Html.TextBoxFor(x => x.WriterPassword, new { @class = "form-control" })
+    <input type="password" name="WriterPassword" class="form-control" />
     @Html.ValidationMessageFor(x => x.WriterPassword, null, new { @class = "text-danger" })
     <br />
     @Html.Label("Yazar Görsel Linki")

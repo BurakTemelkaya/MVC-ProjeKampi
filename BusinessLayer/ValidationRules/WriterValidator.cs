@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrete;
+using EntityLayer.Dto;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.ValidationRules
 {
-    public class WriterValidator : AbstractValidator<Writer>
+    public class WriterValidator : AbstractValidator<WriterLogInDto>
     {
         public WriterValidator()
         {

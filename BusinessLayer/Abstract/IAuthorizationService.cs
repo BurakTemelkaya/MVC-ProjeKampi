@@ -15,7 +15,10 @@ namespace BusinessLayer.Abstract
         void AdminUpdate(AdminLogInDto adminLogInDto);
         bool AdminLogin(AdminLogInDto adminLogInDto);
 
-        void WriterRegister(string writerName, string writerSurName, string writerTitle, string writerAbout, string writerImage, string writerUserName, string writerPassword, bool WriterStatus);
-        bool WriterLogIn(WriterLoginDto writerLogInDto);
+        Writer WriterRegister(WriterLogInDto writerLogInDto);
+
+        void WriterAdd(WriterLogInDto writerLogInDto);
+        void WriterUpdate(WriterLogInDto writerLogInDto);
+        bool WriterLogIn(WriterLogInDto writerLogInDto);
     }
 }
