@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BusinessLayer.Concrete;
 using DataAccesLayer.Concrete;
 using DataAccesLayer.EntityFramework;
+using PagedList;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -29,9 +30,9 @@ namespace MvcProjeKampi.Controllers
                 return View(values);
             }            
         }
-        public ActionResult ContentByHeading(int id)
+        public ActionResult ContentByHeading(int id, int p=1)
         {
-            var contentValues = cm.GetListByHeadingID(id);
+            var contentValues = cm.GetListByHeadingID(id).ToPagedList(p,5);
             return View(contentValues);
         }
     }

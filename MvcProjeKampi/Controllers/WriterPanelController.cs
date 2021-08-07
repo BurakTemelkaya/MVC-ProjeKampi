@@ -24,14 +24,14 @@ namespace MvcProjeKampi.Controllers
         IAuthorizationService authorizationService = new AuthorizationManager(new AdminManager(new EfAdminDal()), new WriterManager(new EfWriterDal()));
         Context c = new Context();
         [HttpGet]
-        public ActionResult WriterProfile(int id=0)
+        public ActionResult WriterProfile(int id = 0)
         {
             string p = (string)Session["WriterMail"];
             id = c.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault();
             var writerValue = wm.GetByIdWriterDto(id);
             return View(writerValue);
         }
-        
+
         [HttpPost]
         public ActionResult WriterProfile(WriterLogInDto p)
         {
@@ -49,10 +49,10 @@ namespace MvcProjeKampi.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-            return View();                      
+            return View();
         }
         public ActionResult MyHeading(string p)
-        {            
+        {
             p = (string)Session["WriterMail"];
             var writerIdInfo = c.Writers.Where(x => x.WriterMail == p).Select(y => y.WriterID).FirstOrDefault();
             var values = hm.GetListByWriter(writerIdInfo);
@@ -75,7 +75,7 @@ namespace MvcProjeKampi.Controllers
         {
             string writerMailInfo = (string)Session["WriterMail"];
             var writerIdInfo = c.Writers.Where(x => x.WriterMail == writerMailInfo).Select(y => y.WriterID).FirstOrDefault();
-            
+
             p.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             p.WriterID = writerIdInfo;
             p.HeadingStatus = true;
@@ -109,7 +109,7 @@ namespace MvcProjeKampi.Controllers
         }
         public ActionResult AllHeading(int p = 1)
         {
-            var headings = hm.GetList().ToPagedList(p, 4);
+            var headings = hm.GetList().ToPagedList(p,5);
             return View(headings);
         }
     }

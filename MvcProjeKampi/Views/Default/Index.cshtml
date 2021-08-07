@@ -1,5 +1,7 @@
 ﻿@using EntityLayer.Concrete
-@model List<Content>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Content>
 <br />
 <!DOCTYPE html>
 <html>
@@ -29,10 +31,18 @@
                                 </div>
                             }
                         </div>
+                        <a href="/WriterPanelContent/AddContent/@ViewBag.id" class="btn btn-primary col-md-6 offset-md-3">Entry Yaz</a>
+                        <br />
                     </div>
                 </div>
             </div>
         </section>
+        @Html.PagedListPager((IPagedList)Model, p => Url.Action("ContentByHeading", new { p }),
+                        new PagedListRenderOptions
+                             {
+                            LiElementClasses = new List<string>
+                            {"page-link"}
+                         })
     </div>
 </body>
 </html>

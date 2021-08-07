@@ -9,3 +9,4 @@ C:\Users\Burak\source\repos\EntityLayer\obj\Debug\EntityLayer.csproj.CoreCompile
 C:\Users\Burak\source\repos\EntityLayer\obj\Debug\EntityLayer.csproj.CopyComplete
 C:\Users\Burak\source\repos\EntityLayer\obj\Debug\EntityLayer.dll
 C:\Users\Burak\source\repos\EntityLayer\obj\Debug\EntityLayer.pdb
+C:\Users\Burak\source\repos\EntityLayer\obj\Debug\EntityLayer.csproj.AssemblyReference.cache

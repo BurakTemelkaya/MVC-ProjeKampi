@@ -1,7 +1,7 @@
-﻿@using EntityLayer.Concrete;
-@model List<Heading>
+﻿@model EntityLayer.Dto.HeadingCountContent
 @{
     Layout = null;
+    int entry = 0;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -37,15 +37,36 @@
                         <a href="#" class="d-block">BAŞLIKLAR</a>
                     </div>
                 </div>
-                
+
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">                                            
-                        @foreach (var item in Model)
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        @foreach (var item in Model.headings)
                         {
+                            foreach (var content in Model.contents)
+                            {
+                                if (content.HeadingID == item.HeadingID)
+                                {
+                                    entry++;
+                                }
+                            }
                             <li class="nav-item">
                                 <a href="/Default/Headings/@item.HeadingID" class="nav-link">
                                     <p>
-                                        @item.HeadingName
+                                        @if (item.HeadingName.Length > 24)
+                                        {
+                                            @item.HeadingName.Substring(0, 25)
+                                        }
+                                        else
+                                        {
+                                            @item.HeadingName
+                                        }
+                                        @if (entry > 0)
+                                        {
+                                            @:&nbsp;&nbsp; @entry
+                                        }
+                                        @{
+                                            entry = 0;
+                                        }
                                     </p>
                                 </a>
                             </li>
@@ -58,7 +79,7 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="content">
-                @Html.Action("Index","Default")
+                @Html.Action("Index", "Default")
             </div>
         </div>
         <aside class="control-sidebar control-sidebar-dark">

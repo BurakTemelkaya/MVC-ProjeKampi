@@ -25,7 +25,6 @@
     <br />
     @Html.Label("Yazar Şifresi")
     <input type="password" placeholder="Yeni Şifreyi Giriniz" name="WriterPassword" class="form-control" />
-    @Html.ValidationMessageFor(x => x.WriterPassword, null, new { @class = "text-danger" })
     <br />
     @Html.Label("Yazar Görsel Linki")
     @Html.TextBoxFor(x => x.WriterImage, new { @class = "form-control" })
