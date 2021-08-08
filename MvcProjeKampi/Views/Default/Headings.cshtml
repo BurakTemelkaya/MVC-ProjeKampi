@@ -50,7 +50,7 @@
                                 }
                             }
                             <li class="nav-item">
-                                <a href="/Default/Headings/@item.HeadingID" class="nav-link">
+                                <a href="/Default/Headings/@item.HeadingID" class="nav-link fc-draggable">
                                     <p>
                                         @if (item.HeadingName.Length > 24)
                                         {
@@ -60,9 +60,11 @@
                                         {
                                             @item.HeadingName
                                         }
+                                    </p>
+                                    <p class="float-right mb-2">
                                         @if (entry > 0)
                                         {
-                                            @:&nbsp;&nbsp; @entry
+                                            @entry
                                         }
                                         @{
                                             entry = 0;
