@@ -16,7 +16,7 @@ namespace BusinessLayer.Concrete
         IAdminService _adminService;
         IWriterService _writerService;
         AdminManager adminManager = new AdminManager(new EfAdminDal());
-        private int _adminID, _writerID;
+        private int _adminID;
         public AuthorizationManager(IAdminService adminService, IWriterService writerService)
         {
             _adminService = adminService;
@@ -76,7 +76,7 @@ namespace BusinessLayer.Concrete
             _adminService.AdminUpdate(admin);
         }
 
-        public bool AdminLogin(AdminLogInDto adminLogInDto)
+        public bool AdminLogin(AdminLogInDto adminLogInDto, out int adminID)
         {
             using (var crypto = new System.Security.Cryptography.HMACSHA512())
             {
@@ -87,9 +87,11 @@ namespace BusinessLayer.Concrete
                     if (HashingHelper.AdminVerifyPasswordHash(adminLogInDto.AdminPassword,
                         item.AdminPasswordHash, item.AdminPasswordSalt) && HashingHelper.AdminVerifyMailHash(adminLogInDto.AdminMail, item.AdminMailHash, item.AdminMailSalt))
                     {
+                        adminID = item.AdminID;
                         return true;
                     }
                 }
+                adminID = 0;
                 return false;
             }
         }

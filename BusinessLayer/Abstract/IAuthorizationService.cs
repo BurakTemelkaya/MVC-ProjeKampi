@@ -13,7 +13,7 @@ namespace BusinessLayer.Abstract
         Admin AdminHash(AdminLogInDto adminLogInDto);
         void AdminAdd(AdminLogInDto adminLogInDto);
         void AdminUpdate(AdminLogInDto adminLogInDto);
-        bool AdminLogin(AdminLogInDto adminLogInDto);
+        bool AdminLogin(AdminLogInDto adminLogInDto, out int ID);
 
         Writer WriterRegister(WriterLogInDto writerLogInDto);
 

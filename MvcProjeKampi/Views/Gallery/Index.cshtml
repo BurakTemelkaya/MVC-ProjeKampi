@@ -2,7 +2,7 @@
 @model List<ImageFile>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = null;//js kütüphaneleri sorun çıkardığı için layoutu null yaptım
 }
 
 <!DOCTYPE html>
@@ -56,10 +56,13 @@
                                             <img src="@item.ImagePath" class="img-fluid mb-2" alt="white sample" style="height: 200px; width: 400px;" />
                                         </a>
                                     </div>
+                                    <div style="text-align:center">
+                                        @*<a class="btn btn-danger" href="/Gallery/DeleteImage/@item.ImageID">Sil</a>*@
+                                    </div>
                                 }
-
                             </div>
                         </div>
+                        <a href="/Gallery/AddImage" class="btn btn-primary">Resim Ekle</a>
                     </div>
                 </div>
             </div>

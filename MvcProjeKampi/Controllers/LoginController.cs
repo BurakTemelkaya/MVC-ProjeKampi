@@ -12,6 +12,7 @@ namespace MvcProjeKampi.Controllers
     public class LoginController : Controller
     {
         IAuthorizationService authorizationService = new AuthorizationManager(new AdminManager(new EfAdminDal()), new WriterManager(new EfWriterDal()));
+        AdminManager adminManager = new AdminManager(new EfAdminDal());
         [HttpGet]
         public ActionResult Index()
         {
@@ -22,10 +23,13 @@ namespace MvcProjeKampi.Controllers
         {
             //var adminUserInfo = adminLoginManager.GetAdmin(p.AdminUserName, p.AdminPassword);
             //if (adminUserInfo != null)//hashsiz giriş
-            if(authorizationService.AdminLogin(p))
+            int id=0;
+            var authorize = authorizationService.AdminLogin(p, out id);
+            if(authorize)
             {
-                FormsAuthentication.SetAuthCookie(p.AdminUserName, false);
-                Session["AdminUserName"] = p.AdminUserName;
+                var adminInfo = adminManager.GetByID(id);
+                FormsAuthentication.SetAuthCookie(adminInfo.AdminUserName, false);
+                Session["AdminUserName"] = adminInfo.AdminUserName;
                 if (!string.IsNullOrEmpty(ReturnUrl))
                     return Redirect(ReturnUrl);
                 else

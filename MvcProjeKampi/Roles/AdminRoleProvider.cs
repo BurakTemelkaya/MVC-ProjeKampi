@@ -42,10 +42,11 @@ namespace MvcProjeKampi.Roles
 
         public override string[] GetRolesForUser(string username)
         {
-            /*Context c = new Context();
+            Context c = new Context();
             var x = c.Admins.FirstOrDefault(y=> y.AdminUserName.ToString()==username);
-            return new string[] { x.AdminRole };*/
-            using (var crypto = new System.Security.Cryptography.HMACSHA512())
+            return new string[] { x.AdminRole };
+
+            /*using (var crypto = new System.Security.Cryptography.HMACSHA512())
             {
                 var mailCrypto = crypto.ComputeHash(Encoding.UTF8.GetBytes(username));
                 var admin = adminManager.GetList();
@@ -65,7 +66,7 @@ namespace MvcProjeKampi.Roles
                     }
                 }
                 return new string[] { };
-            }
+            }*/
         }
 
         public override string[] GetUsersInRole(string roleName)

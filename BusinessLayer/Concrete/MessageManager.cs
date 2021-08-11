@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Security;
 
 namespace BusinessLayer.Concrete
 {
@@ -27,13 +28,13 @@ namespace BusinessLayer.Concrete
         {
             return _messageDal.List(x => x.ReceiverMail == p);
         }
-        public int GetCountUnreadMessage()
+        public int GetCountUnreadMessage(string p)
         {
-            return _messageDal.List(x => !x.IsRead && x.ReceiverMail== "admin@gmail.com").Count;
+            return _messageDal.List(x => !x.IsRead && x.ReceiverMail== p).Count;
         }
-        public int GetCountUnreadSenderMessage()
+        public int GetCountUnreadSenderMessage(string p)
         {
-            return _messageDal.List(x => !x.IsRead && x.SenderMail == "admin@gmail.com").Count;
+            return _messageDal.List(x => !x.IsRead && x.SenderMail == p).Count;
         }
 
         public List<Message> GetListSendbox(string p)

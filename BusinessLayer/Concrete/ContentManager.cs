@@ -38,6 +38,11 @@ namespace BusinessLayer.Concrete
             return _contentdal.Get(x => x.ContentID == id);
         }
 
+        public int GetContentCountByHeading(int id)
+        {
+            return _contentdal.List(x => x.HeadingID == id).Count;
+        }
+
         public List<Content> GetList(string p)
         {
             return _contentdal.List(x=> x.ContentValue.Contains(p));

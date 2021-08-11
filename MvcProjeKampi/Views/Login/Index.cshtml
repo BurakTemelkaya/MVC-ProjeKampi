@@ -31,7 +31,7 @@
                         <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/AdminLTE-3.0.4/login-form-19/images/bg.jpg);"></div>
                         <h3 class="text-center mb-0">Hoş Geldiniz</h3>
                         <p class="text-center">Lütfen Bilgilerinizi Kutucuklara Giriniz</p>
-                        @using (Html.BeginForm("Index", "Login", new { ReturnUrl = Request.QueryString["ReturnUrl"]}, FormMethod.Post))
+                        @using (Html.BeginForm("Index", "Login", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post))
                         {
                             <div class="form-group">
                                 <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>

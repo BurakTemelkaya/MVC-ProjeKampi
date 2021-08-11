@@ -143,6 +143,14 @@
     <Compile Include="Migrations\202108052214234_ChangedAdminMailHash.designer.cs">
       <DependentUpon>202108052214234_ChangedAdminMailHash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108092228185_ImageFileAddedImageDate.cs" />
+    <Compile Include="Migrations\202108092228185_ImageFileAddedImageDate.designer.cs">
+      <DependentUpon>202108092228185_ImageFileAddedImageDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108092329415_ImageFileImagePathLengthChanged500Characters.cs" />
+    <Compile Include="Migrations\202108092329415_ImageFileImagePathLengthChanged500Characters.designer.cs">
+      <DependentUpon>202108092329415_ImageFileImagePathLengthChanged500Characters.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -207,6 +215,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108052214234_ChangedAdminMailHash.resx">
       <DependentUpon>202108052214234_ChangedAdminMailHash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108092228185_ImageFileAddedImageDate.resx">
+      <DependentUpon>202108092228185_ImageFileAddedImageDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108092329415_ImageFileImagePathLengthChanged500Characters.resx">
+      <DependentUpon>202108092329415_ImageFileImagePathLengthChanged500Characters.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

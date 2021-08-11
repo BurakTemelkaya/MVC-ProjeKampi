@@ -1,13 +1,12 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccesLayer.EntityFramework;
-using EntityLayer.Dto;
-using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using MvcProjeKampi.Models;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -16,16 +15,15 @@ namespace MvcProjeKampi.Controllers
     {
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
         ContentManager cm = new ContentManager(new EfContentDal());
+        
         public ActionResult Headings()
         {
-            var heading = hm.GetList();
-            var content = cm.GetList();
-            HeadingCountContent headingCountContent = new HeadingCountContent();           
-            headingCountContent.headings = heading;
-            headingCountContent.contents = content;
+            HeadingByContentCount headingCountContent = new HeadingByContentCount();
+            headingCountContent.Headings = hm.GetList();
+            headingCountContent.Contents = cm.GetList();
             return View(headingCountContent);
         }
-        public PartialViewResult Index(int id = 0, int p = 1)
+        public PartialViewResult Index(int p=1, int id=1)
         {
             var contentList = cm.GetListByHeadingID(id).ToPagedList(p, 5);
             ViewBag.id = id;

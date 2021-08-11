@@ -1,4 +1,4 @@
-﻿@model EntityLayer.Dto.HeadingCountContent
+﻿@model MvcProjeKampi.Models.HeadingByContentCount
 @{
     Layout = null;
     int entry = 0;
@@ -40,9 +40,9 @@
 
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        @foreach (var item in Model.headings)
+                        @foreach (var item in Model.Headings)
                         {
-                            foreach (var content in Model.contents)
+                            foreach (var content in Model.Contents)
                             {
                                 if (content.HeadingID == item.HeadingID)
                                 {

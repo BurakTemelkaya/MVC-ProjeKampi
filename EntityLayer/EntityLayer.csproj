@@ -62,7 +62,6 @@
     <Compile Include="Concrete\Skill.cs" />
     <Compile Include="Concrete\Writer.cs" />
     <Compile Include="Dto\AdminLogInDto.cs" />
-    <Compile Include="Dto\HeadingCountContent.cs" />
     <Compile Include="Dto\WriterLogInDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

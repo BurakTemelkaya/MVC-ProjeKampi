@@ -29,8 +29,9 @@ namespace MvcProjeKampi.Controllers
         public PartialViewResult MessageListMenu()
         {
             ViewBag.ContactCount = cm.GetList().Count;
-            ViewBag.InMessageCount = mm.GetCountUnreadMessage();
-            ViewBag.SendMessageCount = mm.GetCountUnreadSenderMessage();
+            string adminUserName = (string)Session["AdminUserName"];
+            ViewBag.InMessageCount = mm.GetCountUnreadMessage(adminUserName);
+            ViewBag.SendMessageCount = mm.GetCountUnreadSenderMessage(adminUserName);
             return PartialView();
         }
     }

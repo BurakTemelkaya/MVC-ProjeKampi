@@ -1,0 +1,118 @@
+﻿@using EntityLayer.Concrete
+@model MvcProjeKampi.Models.ImageViewModel
+@{
+    ViewBag.Title = "AddImage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="row">
+    <div class="panel-heading">
+        <div class="col-md-12">
+            <h3>
+                <i class="fa fa-file-text-o"></i>
+                <span>Galeri Resim Ekleme Sayfası</span>
+            </h3>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="icon-text">
+        <div class="col-md-12">
+            <h6>
+                <i class="fas fa-info-circle"></i>
+                <span class="icon has-text-info">Yükleyeceğiniz resim formatı .jpg | .jpeg | .png | .gif uzantılı ve max. dosya boyutu 5MB olmalıdır</span>
+            </h6>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-push-2">
+        <section>
+            @using (Html.BeginForm("AddImage", "Gallery", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                @*@Html.AntiForgeryToken()*@
+                <div class="well bs-component">
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-8 col-md-push-2">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <p class="btn btn-default btn-file">
+                                            @*Resim Dosyası Seç…*@
+                                            <button style="display:block;width:200px; height:30px;" onclick="document.getElementById('getFile').click()">Resim Dosyası Seç…</button>
+                                            <input type='file' id="getFile" style="display:none">
+
+                                            @Html.TextBoxFor(x => x.FileAttach, new
+                                            {
+                                                type = "file",
+                                                placeholder = Html.DisplayNameFor(x => x.FileAttach),
+                                                @class = "form-control"
+                                            })
+                                        </p>
+                                    </span>
+                                    @*<input type="text" class="form-control" name="file" id="file" value="" readonly>*@
+                                </div>
+                                @if (Model.IsValid && !string.IsNullOrEmpty(Model.Message))
+                                {
+                                    <span class="text-success">@Model.Message</span>
+                                }
+                                else
+                                {
+                                    <span class="text-danger">@Model.Message</span>@Html.ValidationMessageFor(m => m.FileAttach, "", new { @class = "text-danger" })
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                    <h4 class="text-danger">@ViewBag.ActionMessage</h4>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-5 col-md-10">
+                            <input type="submit" class="btn btn-success" value="Yükle" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </section>
+
+    </div>
+</div>
+
+
+<script>
+    $('#yukle').click(function () {
+        (async () => {
+            const { value: file } = await Swal.fire({
+                title: 'Select image',
+                input: 'file',
+                inputAttributes: {
+                    'accept': 'image/*',
+                    'aria-label': 'Upload your profile picture'
+                }
+            })
+            if (file) {
+                const reader = new FileReader()
+                reader.onload = (e) => {
+                    Swal.fire({
+                        title: 'Your uploaded picture',
+                        imageUrl: e.target.result,
+                        imageAlt: 'The uploaded picture'
+                    })
+                }
+                reader.readAsDataURL(file)
+            }
+        })()
+    })
+</script>
+

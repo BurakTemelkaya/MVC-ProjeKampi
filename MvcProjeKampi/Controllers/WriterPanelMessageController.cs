@@ -24,7 +24,7 @@ namespace MvcProjeKampi.Controllers
         {
             string p = (string)Session["WriterMail"];
             var messageList = mm.GetListInbox(p);
-            ViewBag.unRead = mm.GetCountUnreadMessage();
+            ViewBag.unRead = mm.GetCountUnreadMessage(p);
             return View(messageList);
         }
         public ActionResult Sendbox()

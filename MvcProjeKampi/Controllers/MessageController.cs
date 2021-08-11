@@ -17,10 +17,11 @@ namespace MvcProjeKampi.Controllers
         MessageValidator messageValidator = new MessageValidator();
 
         [Authorize]
-        public ActionResult Inbox(string p)
+        public ActionResult Inbox()
         {
-            var messageList = mm.GetListInbox(p);
-            ViewBag.unRead = mm.GetCountUnreadMessage();
+            string adminUserName = (string)Session["AdminUserName"];
+            var messageList = mm.GetListInbox(adminUserName);
+            ViewBag.unRead = mm.GetCountUnreadMessage(adminUserName);
             return View(messageList);
         }
         public ActionResult Sendbox(string p)
