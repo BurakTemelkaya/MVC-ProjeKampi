@@ -15,7 +15,7 @@ namespace BusinessLayer.Abstract
         void AdminUpdate(AdminLogInDto adminLogInDto);
         bool AdminLogin(AdminLogInDto adminLogInDto, out int ID);
 
-        Writer WriterRegister(WriterLogInDto writerLogInDto);
+        Writer WriterHash(WriterLogInDto writerLogInDto);
 
         void WriterAdd(WriterLogInDto writerLogInDto);
         void WriterUpdate(WriterLogInDto writerLogInDto);

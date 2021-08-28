@@ -16,7 +16,8 @@ namespace BusinessLayer.Concrete
         IAdminService _adminService;
         IWriterService _writerService;
         AdminManager adminManager = new AdminManager(new EfAdminDal());
-        private int _adminID;
+        WriterManager writerManager = new WriterManager(new EfWriterDal());
+        private int _adminID, _writerID;
         public AuthorizationManager(IAdminService adminService, IWriterService writerService)
         {
             _adminService = adminService;
@@ -114,10 +115,11 @@ namespace BusinessLayer.Concrete
             }
         }
 
-        public Writer WriterRegister(WriterLogInDto writerLogInDto)
+        public Writer WriterHash(WriterLogInDto writerLogInDto)
         {
             byte[] passwordHash, passwordSalt;
-
+            _writerID = writerLogInDto.WriterID;
+            var beforWriterInfo = writerManager.GetById(_writerID);
             var writer = new Writer
             {
                 WriterName = writerLogInDto.WriterName,
@@ -135,17 +137,22 @@ namespace BusinessLayer.Concrete
                 writer.WriterPasswordHash = passwordHash;
                 writer.WriterPasswordSalt = passwordSalt;
             }
+            else
+            {
+                writer.WriterPasswordHash = beforWriterInfo.WriterPasswordHash;
+                writer.WriterPasswordSalt = beforWriterInfo.WriterPasswordSalt;
+            }
             return writer;
         }
         public void WriterAdd(WriterLogInDto writerLogInDto)
         {
-            var writer = WriterRegister(writerLogInDto);
+            var writer = WriterHash(writerLogInDto);
             writer.WriterID = writerLogInDto.WriterID;
             _writerService.WriterAdd(writer);
         }
         public void WriterUpdate(WriterLogInDto writerLogInDto)
         {
-            var writer = WriterRegister(writerLogInDto);
+            var writer = WriterHash(writerLogInDto);
             _writerService.WriterUpdate(writer);
         }
     }

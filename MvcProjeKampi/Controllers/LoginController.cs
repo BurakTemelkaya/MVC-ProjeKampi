@@ -5,6 +5,9 @@ using EntityLayer.Concrete;
 using EntityLayer.Dto;
 using System.Web.Mvc;
 using System.Web.Security;
+using Newtonsoft.Json;
+using System.Net;
+using MvcProjeKampi.Models;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -21,24 +24,38 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult Index(AdminLogInDto p, string ReturnUrl)
         {
-            //var adminUserInfo = adminLoginManager.GetAdmin(p.AdminUserName, p.AdminPassword);
-            //if (adminUserInfo != null)//hashsiz giriş
-            int id=0;
-            var authorize = authorizationService.AdminLogin(p, out id);
-            if(authorize)
+            var response = Request["g-recaptcha-response"];
+            const string secret = "6LeKKSMUAAAAAC4s-mflMky8XggtaatxKcx-cQ1y";
+            var client = new WebClient();
+            var reply =
+                    client.DownloadString(
+                        string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
+            var captchaResponse = JsonConvert.DeserializeObject<CaptchaResponse>(reply);
+            if (captchaResponse.Success)
             {
-                var adminInfo = adminManager.GetByID(id);
-                FormsAuthentication.SetAuthCookie(adminInfo.AdminUserName, false);
-                Session["AdminUserName"] = adminInfo.AdminUserName;
-                if (!string.IsNullOrEmpty(ReturnUrl))
-                    return Redirect(ReturnUrl);
+                int id = 0;
+                var authorize = authorizationService.AdminLogin(p, out id);
+                if (authorize)
+                {
+                    var adminInfo = adminManager.GetByID(id);
+                    FormsAuthentication.SetAuthCookie(adminInfo.AdminUserName, false);
+                    Session["AdminUserName"] = adminInfo.AdminUserName;
+                    if (!string.IsNullOrEmpty(ReturnUrl))
+                        return Redirect(ReturnUrl);
+                    else
+                        return RedirectToAction("Index", "Istatistik");
+                }
                 else
-                    return RedirectToAction("Index", "Istatistik");
+                {
+                    TempData["Message"] = "Kullanıcı Adınız veya Şifreniz Hatalı Lütfen Tekrar Deneyiniz";
+                }
             }
             else
             {
-                return RedirectToAction("Index");
+                TempData["Message"] = "Lütfen güvenliği doğrulayınız";
             }
+            return RedirectToAction("Index");
+
         }
         [HttpGet]
         public ActionResult WriterLogin()
@@ -47,24 +64,39 @@ namespace MvcProjeKampi.Controllers
         }
         [HttpPost]
         public ActionResult WriterLogin(WriterLogInDto p, string ReturnUrl)
-        {            
-            //var writerUserInfo = wm.GetWriter(p.WriterMail, p.WriterPassword);
-            //if (writerUserInfo != null)
-            if(authorizationService.WriterLogIn(p))
+        {
+            var response = Request["g-recaptcha-response"];
+            const string secret = "6LeKKSMUAAAAAC4s-mflMky8XggtaatxKcx-cQ1y";
+            var client = new WebClient();
+            var reply =
+                    client.DownloadString(
+                        string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
+            var captchaResponse = JsonConvert.DeserializeObject<CaptchaResponse>(reply);
+            if (captchaResponse.Success)
             {
-                FormsAuthentication.SetAuthCookie(p.WriterMail, false);
-                Session["WriterMail"] = p.WriterMail;
-                if (!string.IsNullOrEmpty(ReturnUrl))
-                    return Redirect(ReturnUrl);//return url'e gitmemizi sağlıyor
+                if (authorizationService.WriterLogIn(p))
+                {
+                    FormsAuthentication.SetAuthCookie(p.WriterMail, false);
+                    Session["WriterMail"] = p.WriterMail;
+                    if (!string.IsNullOrEmpty(ReturnUrl))
+                        return Redirect(ReturnUrl);//return url'e gitmemizi sağlıyor
+                    else
+                        return RedirectToAction("MyContent", "WriterPanelContent");
+                }
                 else
-                    return RedirectToAction("MyContent", "WriterPanelContent");
+                {
+                    TempData["Message"] = "Kullanıcı Adınız veya Şifreniz Hatalı Lütfen Tekrar Deneyiniz";
+                    return RedirectToAction("WriterLogin");
+                }
             }
             else
             {
+                TempData["Message"] = "Lütfen Güvenliği Doğrulayınız";
                 return RedirectToAction("WriterLogin");
             }
+            
 
-        }        
+        }
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();

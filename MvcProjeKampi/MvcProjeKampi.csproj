@@ -162,6 +162,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CaptchaResponse.cs" />
     <Compile Include="Models\Charts\CategoryClass.cs" />
     <Compile Include="Models\Charts\HeadingByContentCount.cs" />
     <Compile Include="Models\Charts\WriterHeadingCount.cs" />

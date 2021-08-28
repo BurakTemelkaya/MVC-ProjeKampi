@@ -15,6 +15,8 @@
 
     <link rel="stylesheet" href="~/AdminLTE-3.0.4/login-form-20/css/style.css">
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
 </head>
 <body class="img js-fullheight" style="background-image: url(/AdminLTE-3.0.4/login-form-20/images/bg.jpg);">
     <section class="ftco-section">
@@ -28,7 +30,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
                         <h3 class="mb-4 text-center">Bir Hesabın Var Mı ?</h3>
-                        @using (Html.BeginForm("WriterLogin", "Login", new { ReturnUrl = Request.QueryString["ReturnUrl"] } , FormMethod.Post, new { @class = "signin-form" }))
+                        @using (Html.BeginForm("WriterLogin", "Login", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { @class = "signin-form" }))
                         {
                             <div class="form-group">
                                 <input type="text" class="form-control" name="WriterMail" placeholder="Mail Adresi" required>
@@ -52,9 +54,9 @@
                                     <a href="#" style="color: #fff">Şifremi Unuttum</a>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <p>@ViewData["LoginStat"]</p>
-                            </div>
+                            <div class="g-recaptcha offset-md-1" data-sitekey="6LeKKSMUAAAAANH-PmFcaKPBm5E79aZGX85RI4l2"></div>
+                            <br />
+                                <p class="text-center text-danger bg-dark">@TempData["Message"]</p>
                         }
                         <p class="w-100 text-center">&mdash; Bir Hesabın Yok Mu ? &mdash;</p>
                         <div class="social d-flex text-center">

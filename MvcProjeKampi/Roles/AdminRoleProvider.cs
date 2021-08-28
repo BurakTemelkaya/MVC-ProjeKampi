@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Security;
 
 namespace MvcProjeKampi.Roles
@@ -43,9 +44,15 @@ namespace MvcProjeKampi.Roles
         public override string[] GetRolesForUser(string username)
         {
             Context c = new Context();
-            var x = c.Admins.FirstOrDefault(y=> y.AdminUserName.ToString()==username);
-            return new string[] { x.AdminRole };
-
+            var x = c.Admins.FirstOrDefault(y => y.AdminUserName.ToString() == username);
+            if (x != null)
+            {
+                return new string[] { x.AdminRole };
+            }
+            else
+            {
+                return new string[] { "D" };
+            }
             /*using (var crypto = new System.Security.Cryptography.HMACSHA512())
             {
                 var mailCrypto = crypto.ComputeHash(Encoding.UTF8.GetBytes(username));
