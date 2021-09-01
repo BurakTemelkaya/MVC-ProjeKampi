@@ -1,0 +1,32 @@
+﻿@model EntityLayer.Dto.AdminLogInDto
+@{
+    ViewBag.Title = "EditAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Admin Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("EditAdmin", "Authorization", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.HiddenFor(x => x.AdminID)
+    @Html.Label("Admin Kullanıcı Adı")
+    @Html.TextBoxFor(x => x.AdminUserName, new { @class = "form-control" })
+    <br />
+    @Html.Label("Admin Maili")
+    <input type="email" name="AdminMail" class="form-control" placeholder="Yeni Maili Giriniz" />
+    <br />
+    @Html.Label("Admin Şifre")
+    <input type="password" name="AdminPassword" class="form-control" placeholder="Yeni Şifre Giriniz" />
+    <br />
+    @Html.Label("Adminin Rolü")
+    @Html.DropDownListFor(x => x.AdminRole, (List<SelectListItem>)ViewBag.roles, new { @class = "form-control" })
+    <br />
+    @Html.Label("Adminin Rolü")
+    @Html.CheckBoxFor(x => x.AdminStatus, new { @class = "form-check" })
+    <br />
+    <button class="btn btn-success">Güncelle</button>
+</div>
+}
+

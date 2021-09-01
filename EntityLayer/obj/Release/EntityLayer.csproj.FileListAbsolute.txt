@@ -1,0 +1,12 @@
+C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\EntityLayer\bin\Release\EntityLayer.dll.config
+C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\EntityLayer\bin\Release\EntityLayer.dll
+C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\EntityLayer\bin\Release\EntityLayer.pdb
+C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\EntityLayer\bin\Release\EntityFramework.dll
+C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\EntityLayer\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\EntityLayer\bin\Release\EntityFramework.xml
+C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\EntityLayer\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\EntityLayer\obj\Release\EntityLayer.csproj.AssemblyReference.cache
+C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\EntityLayer\obj\Release\EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\EntityLayer\obj\Release\EntityLayer.csproj.CopyComplete
+C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\EntityLayer\obj\Release\EntityLayer.dll
+C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\EntityLayer\obj\Release\EntityLayer.pdb

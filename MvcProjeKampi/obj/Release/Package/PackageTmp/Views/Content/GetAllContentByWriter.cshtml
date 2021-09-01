@@ -1,0 +1,19 @@
+﻿@using EntityLayer.Concrete
+@model List<Content>
+@{
+    ViewBag.Title = "GetAllContentByWriter";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+<br />
+@using (Html.BeginForm("GetAllContentByWriter", "Content", FormMethod.Post))
+{
+    <p>
+        Aranacak Kelimeyi Girin: @Html.TextBox("p")
+        <input type="submit" class="control" value="ara" placeholder="Ara" />
+    </p>
+}
+@foreach (var item in Model)
+{
+    <p>@item.ContentValue</p>
+}
+

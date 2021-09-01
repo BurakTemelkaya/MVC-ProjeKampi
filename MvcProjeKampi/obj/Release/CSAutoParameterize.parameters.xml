@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="Context-Web.config Connection String" description="Context Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:sozluk.database.windows.net,1433;Initial Catalog=sozluk;Persist Security Info=False;User ID=burak;Password=Gafgara551;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Burak\\source\\repos\\Odevler_ve_Projeler\\proje\\MVC_PROJE_KAMPI\\MvcProjeKampi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Context']/@connectionString" />
+  </parameter>
+</parameters>

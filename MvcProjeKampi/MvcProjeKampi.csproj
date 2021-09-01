@@ -2576,6 +2576,7 @@
     <Content Include="AdminLTE-3.0.4\web\webfonts\fa-solid-900.ttf" />
     <Content Include="AdminLTE-3.0.4\web\webfonts\fa-solid-900.woff" />
     <Content Include="AdminLTE-3.0.4\web\webfonts\fa-solid-900.woff2" />
+    <None Include="Properties\PublishProfiles\Sozluk - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2669,6 +2670,7 @@
     <Content Include="Views\Schedule\Index.cshtml" />
     <Content Include="Views\Chart\HeadingChartIndex.cshtml" />
     <Content Include="Views\Chart\WriterHeadingIndex.cshtml" />
+    <Content Include="Views\Content\GetAllContentByWriter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

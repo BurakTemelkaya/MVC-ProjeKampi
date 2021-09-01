@@ -25,7 +25,7 @@ namespace MvcProjeKampi.Controllers
         public ActionResult Index(AdminLogInDto p, string ReturnUrl)
         {
             var response = Request["g-recaptcha-response"];
-            const string secret = "6LeKKSMUAAAAAC4s-mflMky8XggtaatxKcx-cQ1y";
+            const string secret = "6LeuxTscAAAAAJ6cc1flqjJt3-51epR4rxl58OCC";
             var client = new WebClient();
             var reply =
                     client.DownloadString(
@@ -66,7 +66,7 @@ namespace MvcProjeKampi.Controllers
         public ActionResult WriterLogin(WriterLogInDto p, string ReturnUrl)
         {
             var response = Request["g-recaptcha-response"];
-            const string secret = "6LeKKSMUAAAAAC4s-mflMky8XggtaatxKcx-cQ1y";
+            const string secret = "6LeuxTscAAAAAJ6cc1flqjJt3-51epR4rxl58OCC";
             var client = new WebClient();
             var reply =
                     client.DownloadString(

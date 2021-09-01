@@ -32,6 +32,11 @@ namespace MvcProjeKampi.Controllers
         public ActionResult GetInBoxMessageDetails(int id)
         {
             var values = mm.GetByID(id);
+            if (!values.IsRead)
+            {
+                values.IsRead = true;
+                mm.MessageUpdate(values);
+            }            
             return View(values);
         }
         public ActionResult GetSendBoxMessageDetails(int id)
