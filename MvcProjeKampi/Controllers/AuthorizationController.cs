@@ -73,13 +73,13 @@ namespace MvcProjeKampi.Controllers
         [AllowAnonymous][HttpPost]
         public ActionResult WriterRegister(WriterLogInDto writerLogInDto)
         {
-            /*ValidationResult result = writerValidator.Validate(p);
+            ValidationResult result = writerValidator.Validate(writerLogInDto);
             if (result.IsValid)
             {
-                p.WriterStatus = true;
-                WriterManager.WriterAdd(p);
-                FormsAuthentication.SetAuthCookie(p.WriterMail, false);
-                Session["WriterMail"] = p.WriterMail;
+                writerLogInDto.WriterStatus = true;
+                authorizationService.WriterAdd(writerLogInDto);
+                FormsAuthentication.SetAuthCookie(writerLogInDto.WriterMail, false);
+                Session["WriterMail"] = writerLogInDto.WriterMail;
                 return RedirectToAction("AllHeading", "WriterPanel");
             }
             else
@@ -89,8 +89,9 @@ namespace MvcProjeKampi.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-            eski kodlar */
-            /*authorizationService.WriterRegister(
+            return View();
+            /*eski kodlar 
+            authorizationService.WriterRegister(
                 writerLogInDto.WriterName,
                 writerLogInDto.WriterSurName,
                 writerLogInDto.WriterTitle,
@@ -98,13 +99,7 @@ namespace MvcProjeKampi.Controllers
                 writerLogInDto.WriterImage,
                 writerLogInDto.WriterMail,
                 writerLogInDto.WriterPassword,
-                writerLogInDto.WriterStatus = true
-                );*/
-            writerLogInDto.WriterStatus = true;
-            authorizationService.WriterAdd(writerLogInDto);
-            FormsAuthentication.SetAuthCookie(writerLogInDto.WriterMail, false);
-            Session["WriterMail"] = writerLogInDto.WriterMail;
-            return RedirectToAction("AllHeading", "WriterPanel");
+                writerLogInDto.WriterStatus = true);*/
         }
         public List<SelectListItem> GetRoles()
         {
