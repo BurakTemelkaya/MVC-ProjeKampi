@@ -147,12 +147,12 @@ namespace BusinessLayer.Concrete
         public void WriterAdd(WriterLogInDto writerLogInDto)
         {
             var writer = WriterHash(writerLogInDto);
-            writer.WriterID = writerLogInDto.WriterID;
             _writerService.WriterAdd(writer);
         }
         public void WriterUpdate(WriterLogInDto writerLogInDto)
         {
             var writer = WriterHash(writerLogInDto);
+            writer.WriterID = writerLogInDto.WriterID;
             _writerService.WriterUpdate(writer);
         }
     }

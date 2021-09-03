@@ -40,6 +40,7 @@ namespace MvcProjeKampi.Controllers
             if (results.IsValid)
             {
                 authorizationService.WriterUpdate(p);
+                p.WriterStatus = true;
                 return RedirectToAction("AllHeading");
             }
             else

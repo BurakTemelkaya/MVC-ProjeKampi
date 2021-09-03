@@ -12,18 +12,18 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="timeline">
+                            <h2 class="text-center">@ViewBag.HeadingName</h2>
                             @foreach (var item in Model)
                             {
                                 <div class="time-label">
                                     <span class="bg-success">
-                                        @item.Writer.WriterName @item.Writer.WriterSurName -
                                         @(((DateTime)item.ContentDate).ToString("dd-MMM-yyyy"))
                                     </span>
                                 </div>
                                 <div>
                                     <i class="fas fa-comment bg-yellow"></i>
                                     <div class="timeline-item">
-                                        <h3 class="timeline-header"><a href="#">@item.Heading.HeadingName</a> </h3>
+                                        <h3 class="timeline-header"><a href="#">@item.Writer.WriterName @item.Writer.WriterSurName</a> </h3>
                                         <div class="timeline-body">
                                             @item.ContentValue
                                         </div>
@@ -31,7 +31,7 @@
                                 </div>
                             }
                         </div>
-                        <a href="/WriterPanelContent/AddContent/@ViewBag.id" class="btn btn-primary col-md-6 offset-md-3">Entry Yaz</a>
+                        <a href="/WriterPanelContent/AddContent/@ViewBag.ID" class="btn btn-primary col-md-6 offset-md-3">Entry Yaz</a>
                         <br />
                     </div>
                 </div>

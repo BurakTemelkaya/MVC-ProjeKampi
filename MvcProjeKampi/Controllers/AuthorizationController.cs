@@ -100,6 +100,7 @@ namespace MvcProjeKampi.Controllers
                 writerLogInDto.WriterPassword,
                 writerLogInDto.WriterStatus = true
                 );*/
+            writerLogInDto.WriterStatus = true;
             authorizationService.WriterAdd(writerLogInDto);
             FormsAuthentication.SetAuthCookie(writerLogInDto.WriterMail, false);
             Session["WriterMail"] = writerLogInDto.WriterMail;

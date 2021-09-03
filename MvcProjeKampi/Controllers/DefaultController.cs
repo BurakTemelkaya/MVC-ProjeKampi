@@ -20,13 +20,14 @@ namespace MvcProjeKampi.Controllers
         {
             HeadingByContentCount headingCountContent = new HeadingByContentCount();
             headingCountContent.Headings = hm.GetList();
-            headingCountContent.Contents = cm.GetList();
+            headingCountContent.Contents = cm.GetList();            
             return View(headingCountContent);
         }
         public PartialViewResult Index(int p=1, int id=1)
         {
             var contentList = cm.GetListByHeadingID(id).ToPagedList(p, 5);
-            ViewBag.id = id;
+            ViewBag.ID = id;
+            ViewBag.HeadingName = hm.GetByID(id).HeadingName;
             return PartialView(contentList);
         }
     }
