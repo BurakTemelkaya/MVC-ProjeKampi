@@ -1,4 +1,4 @@
-https://www.youtube.com/watch?v=yFToRUL6h8A&list=PLKnjBHu2xXNNQJehhCg--CzQQMHXTsFAb serisindeki Ekşi Sözlük benzeri projeyi tamamladım.
+Murat Yücedağın'ın MVC Proje Kampı<a href="https://www.youtube.com/watch?v=yFToRUL6h8A&list=PLKnjBHu2xXNNQJehhCg--CzQQMHXTsFAb"> Eğitim serisindeki<a/> Ekşi Sözlük benzeri projeyi tamamladım.
 
 Projenin canlı linki: https://sozluk.azurewebsites.net
 
