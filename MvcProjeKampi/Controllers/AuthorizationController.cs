@@ -90,16 +90,6 @@ namespace MvcProjeKampi.Controllers
                 }
             }
             return View();
-            /*eski kodlar 
-            authorizationService.WriterRegister(
-                writerLogInDto.WriterName,
-                writerLogInDto.WriterSurName,
-                writerLogInDto.WriterTitle,
-                writerLogInDto.WriterAbout,
-                writerLogInDto.WriterImage,
-                writerLogInDto.WriterMail,
-                writerLogInDto.WriterPassword,
-                writerLogInDto.WriterStatus = true);*/
         }
         public List<SelectListItem> GetRoles()
         {

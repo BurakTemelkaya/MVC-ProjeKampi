@@ -340,6 +340,15 @@
     <Content Include="AdminLTE-3.0.4\images\4.jpg" />
     <Content Include="AdminLTE-3.0.4\images\5.jpg" />
     <Content Include="AdminLTE-3.0.4\images\6.jpg" />
+    <Content Include="AdminLTE-3.0.4\images\HomePage1.PNG" />
+    <Content Include="AdminLTE-3.0.4\images\HomePage2.PNG" />
+    <Content Include="AdminLTE-3.0.4\images\HomePage3.PNG" />
+    <Content Include="AdminLTE-3.0.4\images\HomePage4.PNG" />
+    <Content Include="AdminLTE-3.0.4\images\HomePage5.PNG" />
+    <Content Include="AdminLTE-3.0.4\images\HomePage6.PNG" />
+    <Content Include="AdminLTE-3.0.4\images\HomePage7.PNG" />
+    <Content Include="AdminLTE-3.0.4\images\HomePage8.PNG" />
+    <Content Include="AdminLTE-3.0.4\images\HomePage9.PNG" />
     <Content Include="AdminLTE-3.0.4\index.html" />
     <Content Include="AdminLTE-3.0.4\index2.html" />
     <Content Include="AdminLTE-3.0.4\index3.html" />
