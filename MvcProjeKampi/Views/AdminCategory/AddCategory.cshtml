@@ -17,6 +17,9 @@
         @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.CategoryDescription)
         <br /><br />
+        @Html.Label("Kategori Durumu",new {@class= "form-check-label" })
+        @Html.CheckBoxFor(x => x.CategoryStatus, new { @class = "form-check" })
+        <br /><br />
         <button class="btn btn-info" id="btnAddCategory">Kaydet</button>
     </div>
 }

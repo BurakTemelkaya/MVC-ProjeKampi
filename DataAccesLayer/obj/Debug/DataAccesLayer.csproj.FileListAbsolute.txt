@@ -61,7 +61,6 @@ C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesL
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.ChangedAdminMailHash.resources
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesLayer\obj\Debug\DataAccesLayer.csproj.GenerateResource.cache
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesLayer\obj\Debug\DataAccesLayer.csproj.CoreCompileInputs.cache
-C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesLayer\obj\Debug\DataAccesLayer.csproj.CopyComplete
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesLayer\obj\Debug\DataAccesLayer.dll
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesLayer\obj\Debug\DataAccesLayer.pdb
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesLayer\obj\Debug\DataAccesLayer.Migrations.ImageFileAddedImageDate.resources
