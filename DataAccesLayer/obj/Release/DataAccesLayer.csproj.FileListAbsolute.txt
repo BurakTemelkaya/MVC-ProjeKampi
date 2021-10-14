@@ -30,6 +30,5 @@ C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesL
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesLayer\obj\Release\DataAccesLayer.Migrations.ImageFileImagePathLengthChanged500Characters.resources
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesLayer\obj\Release\DataAccesLayer.csproj.GenerateResource.cache
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesLayer\obj\Release\DataAccesLayer.csproj.CoreCompileInputs.cache
-C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesLayer\obj\Release\DataAccesLayer.csproj.CopyComplete
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesLayer\obj\Release\DataAccesLayer.dll
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\DataAccesLayer\obj\Release\DataAccesLayer.pdb
