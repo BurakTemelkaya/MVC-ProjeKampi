@@ -38,10 +38,12 @@
         </section>
         @Html.PagedListPager((IPagedList)Model, p => Url.Action("ContentByHeading", new { p }),
                         new PagedListRenderOptions
-                             {
+                        {
+                            DisplayLinkToIndividualPages=true,
+                            DisplayPageCountAndCurrentLocation = false,
                             LiElementClasses = new List<string>
                             {"page-link"}
-                         })
+                        })
     </div>
 </body>
 </html>

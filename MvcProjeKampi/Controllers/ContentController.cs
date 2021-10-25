@@ -31,6 +31,7 @@ namespace MvcProjeKampi.Controllers
                 return View(values);
             }
         }
+        [AllowAnonymous]
         public ActionResult ContentByHeading(int id, int p = 1)
         {
             var contentValues = cm.GetListByHeadingID(id).ToPagedList(p, 5);

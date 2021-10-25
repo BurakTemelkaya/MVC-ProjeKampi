@@ -37,7 +37,7 @@
                 </div>
             </div>
         </section>
-        @Html.PagedListPager((IPagedList)Model, p => Url.Action("ContentByHeading", new { p }),
+        @Html.PagedListPager((IPagedList)Model, p => Url.Action("Headings/" + ViewBag.ID, new { p }),
                         new PagedListRenderOptions
                              {
                             LiElementClasses = new List<string>

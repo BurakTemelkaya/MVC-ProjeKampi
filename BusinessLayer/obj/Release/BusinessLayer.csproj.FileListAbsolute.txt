@@ -113,6 +113,5 @@ C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\BusinessLa
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\BusinessLayer\bin\Release\Microsoft.AspNetCore.Cryptography.Internal.xml
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\BusinessLayer\obj\Release\BusinessLayer.csproj.AssemblyReference.cache
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\BusinessLayer\obj\Release\BusinessLayer.csproj.CoreCompileInputs.cache
-C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\BusinessLayer\obj\Release\BusinessLayer.csproj.CopyComplete
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\BusinessLayer\obj\Release\BusinessLayer.dll
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\BusinessLayer\obj\Release\BusinessLayer.pdb
