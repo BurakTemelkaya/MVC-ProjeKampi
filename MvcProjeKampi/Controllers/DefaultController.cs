@@ -19,8 +19,8 @@ namespace MvcProjeKampi.Controllers
         public ActionResult Headings()
         {
             HeadingByContentCount headingCountContent = new HeadingByContentCount();
-            headingCountContent.Headings = hm.GetList();
-            headingCountContent.Contents = cm.GetList();            
+            headingCountContent.Headings = hm.GetList().Where(x=> x.HeadingStatus);
+            headingCountContent.Contents = cm.GetList().Where(x=>x.Heading.HeadingStatus);            
             return View(headingCountContent);
         }
         public PartialViewResult Index(int p=1, int id=1)

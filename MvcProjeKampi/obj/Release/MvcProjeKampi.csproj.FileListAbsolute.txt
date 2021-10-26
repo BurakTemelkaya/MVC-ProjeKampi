@@ -189,6 +189,5 @@ C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\MvcProjeKa
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\MvcProjeKampi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\MvcProjeKampi\obj\Release\MvcProjeKampi.csproj.AssemblyReference.cache
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\MvcProjeKampi\obj\Release\MvcProjeKampi.csproj.CoreCompileInputs.cache
-C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\MvcProjeKampi\obj\Release\MvcProjeKampi.csproj.CopyComplete
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\MvcProjeKampi\obj\Release\MvcProjeKampi.dll
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\MvcProjeKampi\obj\Release\MvcProjeKampi.pdb
