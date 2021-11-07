@@ -1,4 +1,5 @@
 ﻿@model MvcProjeKampi.Models.HeadingByContentCount
+@using MvcProjeKampi.Models
 @{
     Layout = null;
     int entry = 0;
@@ -9,7 +10,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>MVC PROJE KAMPI</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
     <!-- IonIcons -->
@@ -40,7 +40,7 @@
 
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        
+
                         @foreach (var item in Model.Headings)
                         {
                             foreach (var content in Model.Contents)
@@ -51,7 +51,7 @@
                                 }
                             }
                             <li class="nav-item">
-                                <a href="/Default/Headings/@item.HeadingID" class="nav-link fc-draggable">
+                                <a href="/baslik/@Seo.UrlCevir(item.HeadingName)/@item.HeadingID" class="nav-link fc-draggable">
                                     <p>
                                         @if (item.HeadingName.Length > 24)
                                         {

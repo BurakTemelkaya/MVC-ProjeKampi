@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessLayer.Concrete;
+using DataAccesLayer.EntityFramework;
+using EntityLayer.Concrete;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -31,6 +34,9 @@ namespace MvcProjeKampi.Controllers
         [AllowAnonymous]
         public ActionResult HomePage()
         {
+            HeadingManager hm = new HeadingManager(new EfHeadingDal());
+            ViewBag.FirstHeadingID = hm.GetList().FirstOrDefault().HeadingID;
+            ViewBag.FirstHeadingName = hm.GetList().FirstOrDefault().HeadingName;
             return View();
         }
     }
