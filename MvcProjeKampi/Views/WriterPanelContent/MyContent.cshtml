@@ -2,6 +2,7 @@
 @using PagedList
 @using PagedList.Mvc
 @model PagedList.IPagedList<Content>
+@using MvcProjeKampi.Models
 @{
     ViewBag.Title = "MyContent";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
@@ -23,7 +24,7 @@
                                 <div>
                                     <i class="fas fa-comment bg-yellow"></i>
                                     <div class="timeline-item">
-                                        <h3 class="timeline-header"><a href="/default/headings/@item.HeadingID">@item.Heading.HeadingName</a> </h3>
+                                        <h3 class="timeline-header"><a href="/baslik/@Seo.UrlCevir(item.Heading.HeadingName)/@item.HeadingID" target="_blank">@item.Heading.HeadingName</a> </h3>
                                         <div class="timeline-body">
                                             @item.ContentValue
                                         </div>

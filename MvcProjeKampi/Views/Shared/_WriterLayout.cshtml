@@ -1,8 +1,24 @@
-﻿@{
+﻿@using EntityLayer.Concrete
+@using BusinessLayer.Concrete
+@using DataAccesLayer.EntityFramework
+@{
     Layout = null;
+    string WriterName = "";
+    string WriterImage = "";
+    WriterManager wm = new WriterManager(new EfWriterDal());
+    var Writer = wm.GetByMail((string)Session["WriterMail"]);
+    if (Writer != null)
+    {
+        WriterName = Writer.WriterName + " " + Writer.WriterSurName;
+        WriterImage = Writer.WriterImage;
+    }
+    else
+    {
+        Url.IsLocalUrl("Login/WriterLogin");
+    }
 }
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,22 +40,22 @@
             <a href="index3.html" class="brand-link">
                 <img src="~/AdminLTE-3.0.4/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
-                <span class="brand-text font-weight-light">MVC Proje Kampı</span>
+                <span class="brand-text font-weight-light">Yazar Paneli</span>
             </a>
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="~/AdminLTE-3.0.4/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="@WriterImage" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Yazar Paneli</a>
+                        <a href="/WriterPanel/WriterProfile" class="d-block">@WriterName</a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
 
                         <li class="nav-item has-treeview">
                             <a href="/WriterPanel/WriterProfile/" class="nav-link">
@@ -139,4 +155,5 @@
     <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard3.js"></script>
 </body>
 </html>
+
 

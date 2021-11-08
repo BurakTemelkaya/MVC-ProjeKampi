@@ -2644,7 +2644,6 @@
     <Content Include="Views\ErrorPage\Page404.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Shared\_WriterLayout.cshtml" />
     <Content Include="Views\WriterPanel\WriterProfile.cshtml" />
     <Content Include="Views\WriterPanel\MyHeading.cshtml" />
     <Content Include="Views\WriterPanel\NewHeading.cshtml" />
@@ -2681,6 +2680,7 @@
     <Content Include="Views\Chart\HeadingChartIndex.cshtml" />
     <Content Include="Views\Chart\WriterHeadingIndex.cshtml" />
     <Content Include="Views\Content\GetAllContentByWriter.cshtml" />
+    <Content Include="Views\Shared\_WriterLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -35,7 +35,7 @@ namespace MvcProjeKampi.Controllers
             if (results.IsValid)
             {
                 authorizationService.WriterAdd(p);
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             else
             {
@@ -59,7 +59,7 @@ namespace MvcProjeKampi.Controllers
             if (results.IsValid)
             {
                 authorizationService.WriterUpdate(p);
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             else
             {
@@ -68,7 +68,6 @@ namespace MvcProjeKampi.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-            
             return View();
         }
     }

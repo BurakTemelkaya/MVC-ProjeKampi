@@ -2,6 +2,7 @@
 @using PagedList
 @using PagedList.Mvc
 @model PagedList.IPagedList<Heading>
+@using MvcProjeKampi.Models
 @{
     ViewBag.Title = "AllHeading";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
@@ -94,7 +95,7 @@
                                     <span class="@color">@item.Category.CategoryName</span>
                                 </td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm" href="/Default/Headings/@item.HeadingID">
+                                    <a class="btn btn-primary btn-sm" href="/baslik/@Seo.UrlCevir(item.HeadingName)/@item.HeadingID" target="_blank">
                                         <i class="fas fa-folder">
                                         </i>
                                         Yazılar
