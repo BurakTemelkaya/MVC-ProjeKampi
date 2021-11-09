@@ -4,8 +4,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-@{ 
-    string statu="";
+@{
+    string status = "";
     string statuColor = "";
 }
 
@@ -23,20 +23,33 @@
     {
         if (item.AdminStatus)
         {
-            statu = "Pasif Yap";
-            statuColor = "bg-danger";
+            status = "Pasif Yap";
+            statuColor = "btn-secondary";
         }
         else
         {
-            statu = "Aktif Yap";
-            statuColor = "bg-primary";
+            status = "Aktif Yap";
+            statuColor = "btn-success"; 
         }
         <tr>
             <th scope="row">@item.AdminID</th>
             <td>@item.AdminUserName</td>
             <td>@item.AdminRole</td>
-            <td>Aktif</td>
-            <td><a href="/Authorization/StatusChangedAdmin/@item.AdminID" class="@statuColor">@statu</a></td>
+            <td>
+                @if (item.AdminStatus)
+                {
+                    <span class="badge badge-success">Aktif</span>
+                }
+                else
+                {
+                    <span class="badge badge-secondary">Pasif</span>
+                }
+            </td>
+            <td>
+                <a href="/Authorization/StatusChangedAdmin/@item.AdminID"
+                   class="btn @statuColor">@status                    
+                </a>
+            </td>
             <td><a href="/Authorization/EditAdmin/@item.AdminID" class="btn btn-warning">Yetkisini Değiştir</a></td>
         </tr>
     }
