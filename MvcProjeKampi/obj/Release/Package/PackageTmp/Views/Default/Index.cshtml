@@ -2,7 +2,6 @@
 @using PagedList
 @using PagedList.Mvc
 @model PagedList.IPagedList<Content>
-@using MvcProjeKampi.Models
 <br />
 <!DOCTYPE html>
 <html>
@@ -41,12 +40,11 @@
                 </div>
             </div>
         </section>
-        @Html.PagedListPager((IPagedList)Model, p => Url.Action(Seo.UrlCevir(ViewBag.HeadingName) + "/" + ViewBag.ID, "baslik/", new { p }),
-                        new PagedListRenderOptions
-                        {
-                            LiElementClasses = new List<string>
-                            {"page-link"}
-                        })
+        <link rel="stylesheet" href="~/Content/PagedList.css" />
+        @if (ViewBag.EntryCount > 5)
+        {
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("headings", new { page }))
+        }
     </div>
 </body>
 </html>

@@ -115,4 +115,3 @@ C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\BusinessLa
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\BusinessLayer\obj\Release\BusinessLayer.csproj.CoreCompileInputs.cache
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\BusinessLayer\obj\Release\BusinessLayer.dll
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\BusinessLayer\obj\Release\BusinessLayer.pdb
-C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\BusinessLayer\obj\Release\BusinessLayer.csproj.CopyComplete

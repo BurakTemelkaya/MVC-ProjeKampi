@@ -191,4 +191,3 @@ C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\MvcProjeKa
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\MvcProjeKampi\obj\Release\MvcProjeKampi.csproj.CoreCompileInputs.cache
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\MvcProjeKampi\obj\Release\MvcProjeKampi.dll
 C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\MvcProjeKampi\obj\Release\MvcProjeKampi.pdb
-C:\Users\Burak\source\repos\Odevler_ve_Projeler\proje\MVC_PROJE_KAMPI\MvcProjeKampi\obj\Release\MvcProjeKampi.csproj.CopyComplete

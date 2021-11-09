@@ -23,11 +23,12 @@ namespace MvcProjeKampi.Controllers
             headingCountContent.Contents = cm.GetList().Where(x => x.Heading.HeadingStatus == true);
             return View(headingCountContent);
         }
-        public PartialViewResult Index(int p = 1, int id = 1)
+        public PartialViewResult Index(int page = 1, int id = 1)
         {
-            var contentList = cm.GetListByHeadingID(id).ToPagedList(p, 5);
+            var contentList = cm.GetListByHeadingID(id).ToPagedList(page, 5);
             ViewBag.ID = id;
             ViewBag.HeadingName = hm.GetByID(id).HeadingName;
+            ViewBag.EntryCount = cm.GetListByHeadingID(id).Count();
             return PartialView(contentList);
         }
     }

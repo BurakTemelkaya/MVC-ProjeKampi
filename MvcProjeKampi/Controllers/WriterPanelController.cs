@@ -108,9 +108,9 @@ namespace MvcProjeKampi.Controllers
             hm.HeadingDelete(HeadingValue);
             return RedirectToAction("MyHeading");
         }
-        public ActionResult AllHeading(int p = 1)
+        public ActionResult AllHeading(int page = 1)
         {
-            var headings = hm.GetList().ToPagedList(p,5);
+            var headings = hm.GetList().ToPagedList(page,5);
             return View(headings);
         }
     }
