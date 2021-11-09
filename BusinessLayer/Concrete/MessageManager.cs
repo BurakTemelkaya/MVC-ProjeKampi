@@ -30,7 +30,7 @@ namespace BusinessLayer.Concrete
         }
         public int GetCountUnreadMessage(string p)
         {
-            return _messageDal.List(x => !x.IsRead && x.ReceiverMail== p).Count;
+            return _messageDal.List(x => !x.IsRead && x.ReceiverMail == p).Count;
         }
         public int GetCountUnreadSenderMessage(string p)
         {
@@ -55,6 +55,11 @@ namespace BusinessLayer.Concrete
         public void MessageUpdate(Message message)
         {
             _messageDal.Update(message);
+        }
+
+        public int MessageCount()
+        {
+            return _messageDal.List().Count();
         }
     }
 }

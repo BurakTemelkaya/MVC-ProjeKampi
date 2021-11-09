@@ -12,7 +12,7 @@
         <h2 class="text-center">@ViewBag.HeadingName</h2>
         @Html.Label("İçeriğinizi Yazın", new { @class = "text-center" })
         @Html.TextAreaFor(x => x.ContentValue, 10, 30, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.ContentValue)
+        @Html.ValidationMessageFor(x => x.ContentValue, "", new { @class = "text-danger" })
         <br />
         <br />
         <br />

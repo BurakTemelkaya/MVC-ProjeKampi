@@ -8,6 +8,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using BusinessLayer.ValidationRules;
+using FluentValidation.Results;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -34,13 +36,34 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult AddContent(Content p)
         {
-            p.ContentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            string mail = (string)Session["WriterMail"];
-            var writerIdInfo = c.Writers.Where(x => x.WriterMail == mail).Select(y => y.WriterID).FirstOrDefault();
-            p.WriterID = writerIdInfo;
-            p.ContentStatus = true;
-            cm.ContentAdd(p);
-            return RedirectToAction("MyContent");
+            ContentValidator contentValidator = new ContentValidator();
+            ValidationResult result = contentValidator.Validate(p);
+            if (result.IsValid)
+            {
+                p.ContentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                string mail = (string)Session["WriterMail"];
+                var writerIdInfo = c.Writers.Where(x => x.WriterMail == mail).Select(y => y.WriterID).FirstOrDefault();
+                if (writerIdInfo != 0)
+                {
+                    p.WriterID = writerIdInfo;
+                    p.ContentStatus = true;
+                    cm.ContentAdd(p);
+                    return RedirectToAction("MyContent");
+                }
+                else
+                {
+                    return RedirectToAction("writerlogin", "login");
+                }
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+
         }
         public ActionResult toDoList()
         {

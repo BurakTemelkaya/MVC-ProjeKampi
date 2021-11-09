@@ -2681,6 +2681,7 @@
     <Content Include="Views\Chart\WriterHeadingIndex.cshtml" />
     <Content Include="Views\Content\GetAllContentByWriter.cshtml" />
     <Content Include="Views\Shared\_WriterLayout.cshtml" />
+    <Content Include="Views\Home\Istatistikler.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

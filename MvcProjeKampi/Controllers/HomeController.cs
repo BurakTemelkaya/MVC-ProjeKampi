@@ -9,6 +9,7 @@ using EntityLayer.Concrete;
 
 namespace MvcProjeKampi.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()//veri döndürmek için kullanılır
@@ -31,13 +32,25 @@ namespace MvcProjeKampi.Controllers
         {
             return View();
         }
+        HeadingManager hm = new HeadingManager(new EfHeadingDal());
         [AllowAnonymous]
         public ActionResult HomePage()
         {
-            HeadingManager hm = new HeadingManager(new EfHeadingDal());
             ViewBag.FirstHeadingID = hm.GetList().FirstOrDefault().HeadingID;
             ViewBag.FirstHeadingName = hm.GetList().FirstOrDefault().HeadingName;
             return View();
+        }
+        public PartialViewResult Istatistikler()
+        {
+            ContentManager cm = new ContentManager(new EfContentDal());
+            WriterManager wm = new WriterManager(new EfWriterDal());
+            MessageManager mm = new MessageManager(new EfMessageDal());
+            ViewBag.HeadingCount = hm.GetList().Count();
+            ViewBag.EntryCount = cm.GetList().Count();
+            ViewBag.WriterCount = wm.GetList().Count();                        
+            ViewBag.MessageCount = mm.MessageCount();
+
+            return PartialView();
         }
     }
 }
