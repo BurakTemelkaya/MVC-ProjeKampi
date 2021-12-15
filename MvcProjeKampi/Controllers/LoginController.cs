@@ -38,7 +38,7 @@ namespace MvcProjeKampi.Controllers
                 if (authorize)
                 {
                     var adminInfo = adminManager.GetByID(id);
-                    FormsAuthentication.SetAuthCookie(adminInfo.AdminUserName, false);
+                    FormsAuthentication.SetAuthCookie(adminInfo.AdminUserName, true);
                     Session["AdminUserName"] = adminInfo.AdminUserName;
                     if (!string.IsNullOrEmpty(ReturnUrl))
                         return Redirect(ReturnUrl);
@@ -76,7 +76,7 @@ namespace MvcProjeKampi.Controllers
             {
                 if (authorizationService.WriterLogIn(p))
                 {
-                    FormsAuthentication.SetAuthCookie(p.WriterMail, false);
+                    FormsAuthentication.SetAuthCookie(p.WriterMail, true);
                     Session["WriterMail"] = p.WriterMail;
                     if (!string.IsNullOrEmpty(ReturnUrl))
                         return Redirect(ReturnUrl);//return url'e gitmemizi sağlıyor
@@ -94,7 +94,7 @@ namespace MvcProjeKampi.Controllers
                 TempData["Message"] = "Lütfen Güvenliği Doğrulayınız";
                 return RedirectToAction("WriterLogin");
             }
-            
+
 
         }
         public ActionResult LogOut()
