@@ -1,4 +1,4 @@
-﻿@model EntityLayer.Concrete.Writer
+﻿@model EntityLayer.Dto.WriterLogInDto
 @{
     Layout = null;
 }
@@ -44,10 +44,12 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" name="WriterMail" placeholder="Mail Adresi" required>
                             </div>
+                            @Html.ValidationMessageFor(x => x.WriterMail)
                             <div class="form-group">
                                 <input id="password-field" type="password" class="form-control" name="WriterPassword" placeholder="*****" required>
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
+                            @Html.ValidationMessageFor(x => x.WriterPassword)
                             <div class="form-group">
                                 <button type="submit" class="form-control btn btn-primary submit px-3">Giriş Yap</button>
                             </div>
@@ -65,7 +67,7 @@
                             </div>
                             <div class="g-recaptcha offset-md-1" data-sitekey="6LeuxTscAAAAAHDUTM2qQl8-0E6l9pm1ZfzBUg6Y"></div>
                             <br />
-                                <p class="text-center text-danger bg-dark">@TempData["Message"]</p>
+                            <p class="text-center text-danger bg-dark">@TempData["Message"]</p>
                         }
                         <p class="w-100 text-center">&mdash; Bir Hesabın Yok Mu ? &mdash;</p>
                         <div class="social d-flex text-center">

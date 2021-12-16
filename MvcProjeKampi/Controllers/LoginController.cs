@@ -8,6 +8,8 @@ using System.Web.Security;
 using Newtonsoft.Json;
 using System.Net;
 using MvcProjeKampi.Models;
+using BusinessLayer.ValidationRules;
+using FluentValidation.Results;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -16,6 +18,7 @@ namespace MvcProjeKampi.Controllers
     {
         IAuthorizationService authorizationService = new AuthorizationManager(new AdminManager(new EfAdminDal()), new WriterManager(new EfWriterDal()));
         AdminManager adminManager = new AdminManager(new EfAdminDal());
+        WriterValidator writerValidator = new WriterValidator();
         [HttpGet]
         public ActionResult Index()
         {
@@ -32,7 +35,7 @@ namespace MvcProjeKampi.Controllers
                         string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
             var captchaResponse = JsonConvert.DeserializeObject<CaptchaResponse>(reply);
             if (captchaResponse.Success)
-            {
+            {                
                 int id = 0;
                 var authorize = authorizationService.AdminLogin(p, out id);
                 if (authorize)
@@ -74,7 +77,8 @@ namespace MvcProjeKampi.Controllers
             var captchaResponse = JsonConvert.DeserializeObject<CaptchaResponse>(reply);
             if (captchaResponse.Success)
             {
-                if (authorizationService.WriterLogIn(p))
+                ValidationResult results = writerValidator.Validate(p);
+                if (results.IsValid && authorizationService.WriterLogIn(p))
                 {
                     FormsAuthentication.SetAuthCookie(p.WriterMail, true);
                     Session["WriterMail"] = p.WriterMail;
